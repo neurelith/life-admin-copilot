@@ -1,9 +1,8 @@
 /* ============================================================
-   LIFE ADMIN COPILOT — Luxury Interactive Engine
-   Spotlight tracking, multi-layer 3D tilt, audio synthesis, count-up.
+   LIFE ADMIN COPILOT — Cinematic Interactive & Audio Engine (Nolan / Apple Standard)
+   Web Audio synthesized haptics: mechanical clicks, temporal clock ticks, sub-bass resonance.
    ============================================================ */
 
-// ── Synthesized Luxury Tactile Sound Engine (Web Audio API) ──
 class TactileAudio {
   constructor() {
     this.ctx = null;
@@ -19,6 +18,7 @@ class TactileAudio {
     }
   }
 
+  // Mechanical switch click
   playClick() {
     if (!this.enabled) return;
     try {
@@ -30,20 +30,73 @@ class TactileAudio {
       const gain = this.ctx.createGain();
       
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(880, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(320, this.ctx.currentTime + 0.025);
+      osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(240, this.ctx.currentTime + 0.03);
 
-      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.025);
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
 
       osc.start();
-      osc.stop(this.ctx.currentTime + 0.03);
+      osc.stop(this.ctx.currentTime + 0.035);
     } catch (e) {}
   }
 
+  // Temporal clock tick (Nolan-inspired ticking time)
+  playTick() {
+    if (!this.enabled) return;
+    try {
+      this.init();
+      if (!this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, this.ctx.currentTime + 0.015);
+
+      gain.gain.setValueAtTime(0.025, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.015);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.02);
+    } catch (e) {}
+  }
+
+  // Deep Sub-Bass Cinematic Boom (on launch / auth)
+  playSubBass() {
+    if (!this.enabled) return;
+    try {
+      this.init();
+      if (!this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(160, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.5);
+
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.6);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.65);
+    } catch (e) {}
+  }
+
+  // Harmonious chord resolution
   playComplete() {
     if (!this.enabled) return;
     try {
@@ -51,33 +104,33 @@ class TactileAudio {
       if (!this.ctx) return;
       if (this.ctx.state === 'suspended') this.ctx.resume();
 
-      // Pleasant luxury major chord resolution
-      const freqs = [523.25, 659.25, 783.99]; // C5, E5, G5
+      const freqs = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
       freqs.forEach((f, i) => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(f, this.ctx.currentTime + i * 0.03);
+        osc.frequency.setValueAtTime(f, this.ctx.currentTime + i * 0.035);
 
-        gain.gain.setValueAtTime(0.03, this.ctx.currentTime + i * 0.03);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.035, this.ctx.currentTime + i * 0.035);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
 
-        osc.start(this.ctx.currentTime + i * 0.03);
-        osc.stop(this.ctx.currentTime + 0.3);
+        osc.start(this.ctx.currentTime + i * 0.035);
+        osc.stop(this.ctx.currentTime + 0.4);
       });
     } catch (e) {}
   }
 }
 
 const tactile = new TactileAudio();
+window.tactile = tactile;
 
-// ── Aceternity Mouse-Following Spotlight Engine ──
+// ── Mouse-Following Spotlight Tracking ──
 function initSpotlightCards() {
-  const elements = document.querySelectorAll('.spotlight-card, .bento-tile, .item-row, .doc-card-3d');
+  const elements = document.querySelectorAll('.spotlight-card, .bento-tile, .item-row, .doc-card-3d, .spatial-feature-card');
   elements.forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const rect = el.getBoundingClientRect();
@@ -101,161 +154,88 @@ function init3DParallaxTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
       
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
-
+    
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     });
   });
-}
-
-// ── Animated Metric Counter ──
-function animateCountUp(element, target, prefix = '') {
-  if (!element) return;
-  const duration = 800;
-  const start = 0;
-  const startTime = performance.now();
-
-  function update(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeProgress = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    const current = Math.floor(start + (target - start) * easeProgress);
-
-    element.textContent = `${prefix}${current.toLocaleString()}`;
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      element.textContent = `${prefix}${target.toLocaleString()}`;
-    }
-  }
-
-  requestAnimationFrame(update);
 }
 
 // ── Natural Language Search Query Engine ──
-function executeNaturalLanguageSearch(query, data) {
-  if (!query || query.trim() === '') return [];
+function executeNaturalLanguageSearch(query, dataset) {
   const q = query.toLowerCase().trim();
   const results = [];
 
-  // Special NLP Intent matching
-  if (q.includes('bill') || q.includes('pay') || q.includes('due') || q.includes('money')) {
-    data.tasks.filter(t => t.amount || t.category === 'finance').forEach(t => {
+  if (q.includes('bill') || q.includes('pay') || q.includes('money') || q.includes('due') || q.includes('electric') || q.includes('fee')) {
+    dataset.tasks.filter(t => t.category === 'finance' || t.amount).forEach(item => {
       results.push({
-        type: 'Task Obligation',
-        title: t.title,
-        subtitle: `${t.due} · Amount: ${t.amount || 'None'}`,
-        badge: t.dueCategory,
-        item: t,
-        targetView: 'tasks'
+        title: item.title,
+        subtitle: `${item.due} · ${item.amount || 'No fee'} (${item.sourceName})`,
+        type: 'Actionable Bill',
+        targetView: 'tasks',
+        item: item
       });
     });
-    data.inbox.filter(i => i.sourceCategory === 'finance' || i.amount).forEach(i => {
+    dataset.inbox.filter(i => i.amount || i.sourceCategory === 'finance').forEach(item => {
       results.push({
-        type: 'Inbox Clutter',
-        title: i.title,
-        subtitle: `From ${i.source} · ${i.date}`,
-        badge: 'Inbox',
-        item: i,
-        targetView: 'inbox'
+        title: item.title,
+        subtitle: `Inbox Clutter · ${item.amount} (${item.source})`,
+        type: 'Unprocessed Bill',
+        targetView: 'inbox',
+        item: item
       });
     });
   }
 
-  if (q.includes('passport') || q.includes('expire') || q.includes('identity')) {
-    data.documents.filter(d => d.category === 'identity' || d.expires).forEach(d => {
+  if (q.includes('passport') || q.includes('id') || q.includes('expire') || q.includes('document') || q.includes('aadhaar')) {
+    dataset.documents.forEach(doc => {
       results.push({
-        type: 'Document Record',
-        title: d.title,
-        subtitle: `Expires: ${d.expires} · Source: ${d.source}`,
-        badge: d.categoryName,
-        item: d,
-        targetView: 'documents'
+        title: doc.title,
+        subtitle: `${doc.source} · Expires: ${doc.expires}`,
+        type: 'Secured Document',
+        targetView: 'documents',
+        item: doc
       });
     });
   }
 
-  if (q.includes('chennai') || q.includes('trip') || q.includes('travel') || q.includes('train')) {
-    data.tasks.filter(t => t.category === 'travel').forEach(t => {
+  if (q.includes('trip') || q.includes('travel') || q.includes('chennai') || q.includes('train') || q.includes('pnr')) {
+    dataset.tasks.filter(t => t.category === 'travel').forEach(item => {
       results.push({
-        type: 'Travel Preparation',
-        title: t.title,
-        subtitle: `${t.due} · ${t.sourceName}`,
-        badge: 'Travel',
-        item: t,
-        targetView: 'tasks'
+        title: item.title,
+        subtitle: `${item.due} · ${item.sourceName}`,
+        type: 'Travel Obligation',
+        targetView: 'tasks',
+        item: item
       });
     });
-    data.inbox.filter(i => i.sourceCategory === 'travel').forEach(i => {
+    dataset.timeline.filter(t => t.category === 'travel').forEach(item => {
       results.push({
-        type: 'Travel Booking',
-        title: i.title,
-        subtitle: `${i.source} · Departure: ${i.date}`,
-        badge: 'IRCTC',
-        item: i,
-        targetView: 'inbox'
+        title: item.title,
+        subtitle: `${item.day} at ${item.time}`,
+        type: 'Travel Event',
+        targetView: 'calendar',
+        item: item
       });
     });
   }
-
-  if (q.includes('receipt') || q.includes('warranty') || q.includes('headphone') || q.includes('sony') || q.includes('amazon')) {
-    data.documents.filter(d => d.category === 'warranty' || d.source.includes('Amazon')).forEach(d => {
-      results.push({
-        type: 'Purchase & Warranty',
-        title: d.title,
-        subtitle: `Warranty valid until: ${d.expires}`,
-        badge: 'Warranty Protected',
-        item: d,
-        targetView: 'documents'
-      });
-    });
-  }
-
-  // Fallback match across all entities
-  data.tasks.forEach(t => {
-    if ((t.title.toLowerCase().includes(q) || t.sourceName.toLowerCase().includes(q)) && !results.some(r => r.item.id === t.id)) {
-      results.push({
-        type: 'Task',
-        title: t.title,
-        subtitle: `${t.due} · ${t.sourceName}`,
-        badge: t.category,
-        item: t,
-        targetView: 'tasks'
-      });
-    }
-  });
-
-  data.inbox.forEach(i => {
-    if ((i.title.toLowerCase().includes(q) || i.source.toLowerCase().includes(q) || i.summary.toLowerCase().includes(q)) && !results.some(r => r.item.id === i.id)) {
-      results.push({
-        type: 'Inbox Item',
-        title: i.title,
-        subtitle: `From ${i.source} · ${i.date}`,
-        badge: i.sourceCategory,
-        item: i,
-        targetView: 'inbox'
-      });
-    }
-  });
-
-  data.documents.forEach(d => {
-    if ((d.title.toLowerCase().includes(q) || d.source.toLowerCase().includes(q)) && !results.some(r => r.item.id === d.id)) {
-      results.push({
-        type: 'Document',
-        title: d.title,
-        subtitle: `Expires: ${d.expires} · Type: ${d.fileType}`,
-        badge: d.categoryName,
-        item: d,
-        targetView: 'documents'
-      });
-    }
-  });
 
   return results;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSpotlightCards();
+  init3DParallaxTilt();
+
+  // Attach mechanical click audio to all buttons
+  document.querySelectorAll('button, .nav-item, .item-row, .sample-pill, .filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tactile.playClick();
+    });
+  });
+});

@@ -1,56 +1,57 @@
 /* ============================================================
-   LIFE ADMIN COPILOT — Design Tokens (Linear / Raycast / Apple Aesthetic)
-   Clean obsidian dark palette, precision 1px borders, crisp typography.
+   LIFE ADMIN COPILOT — Warm Brutalist Editorial & Aurora Palette
+   Monocle / Kinfolk / Stripe / Linear Masterpiece Edition
    ============================================================ */
 
 :root {
-  /* ── Backgrounds ── */
-  --bg-app: #09090B;
-  --bg-sidebar: #0E0E11;
-  --bg-card: #131316;
-  --bg-card-hover: #18181D;
-  --bg-card-subtle: rgba(255, 255, 255, 0.03);
-  --bg-elevated: #1C1C21;
-  --bg-input: rgba(255, 255, 255, 0.05);
+  /* ── Backgrounds (Warm Charcoal & Studio Paper) ── */
+  --bg-app: #0F0F0E;
+  --bg-sidebar: #141311;
+  --bg-card: #1A1917;
+  --bg-card-hover: #22201D;
+  --bg-card-subtle: rgba(232, 200, 114, 0.03);
+  --bg-elevated: #282622;
+  --bg-input: rgba(255, 255, 255, 0.04);
+  --bg-glass: rgba(15, 15, 14, 0.82);
 
   /* ── Borders ── */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-focus: #FFFFFF;
+  --border-subtle: rgba(232, 228, 220, 0.08);
+  --border-medium: rgba(232, 228, 220, 0.16);
+  --border-focus: #E8C872;
 
-  /* ── Text ── */
-  --text-primary: #EDEDED;
-  --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
-  --text-inverse: #09090B;
+  /* ── Text (Warm Cream & Stone) ── */
+  --text-primary: #E8E4DC;
+  --text-secondary: #9B9689;
+  --text-muted: #6E695E;
+  --text-inverse: #0F0F0E;
 
-  /* ── Accents & Urgency ── */
-  --accent: #FFFFFF;
-  --accent-blue: #3B82F6;
-  --accent-emerald: #10B981;
-  --accent-amber: #F59E0B;
-  --urgency-high: #EF4444;
-  --urgency-high-bg: rgba(239, 68, 68, 0.1);
+  /* ── Luxury Accents ── */
+  --accent: #E8C872;             /* Antique Gold */
+  --accent-gold: #E8C872;        /* Antique Gold */
+  --accent-teal: #7CAABD;        /* Dusty Teal */
+  --accent-terracotta: #D4715E;  /* Terracotta Urgency */
+  
+  --urgency-high: #D4715E;
+  --urgency-high-bg: rgba(212, 113, 94, 0.12);
 
-  /* ── Categories ── */
-  --cat-education: #3B82F6;
-  --cat-education-bg: rgba(59, 130, 246, 0.12);
-  --cat-finance: #10B981;
-  --cat-finance-bg: rgba(16, 185, 129, 0.12);
-  --cat-travel: #06B6D4;
-  --cat-travel-bg: rgba(6, 182, 212, 0.12);
-  --cat-health: #EC4899;
-  --cat-health-bg: rgba(236, 72, 153, 0.12);
-  --cat-warranty: #8B5CF6;
-  --cat-warranty-bg: rgba(139, 92, 246, 0.12);
-  --cat-housing: #F97316;
-  --cat-housing-bg: rgba(249, 115, 22, 0.12);
-  --cat-identity: #6366F1;
-  --cat-identity-bg: rgba(99, 102, 241, 0.12);
+  /* ── Category Tints ── */
+  --cat-education: #7CAABD;
+  --cat-education-bg: rgba(124, 170, 189, 0.12);
+  --cat-finance: #E8C872;
+  --cat-finance-bg: rgba(232, 200, 114, 0.12);
+  --cat-travel: #64A69A;
+  --cat-travel-bg: rgba(100, 166, 154, 0.12);
+  --cat-health: #D4715E;
+  --cat-health-bg: rgba(212, 113, 94, 0.12);
+  --cat-warranty: #A682B8;
+  --cat-warranty-bg: rgba(166, 130, 184, 0.12);
+  --cat-housing: #D98E52;
+  --cat-housing-bg: rgba(217, 142, 82, 0.12);
 
-  /* ── Typography Stacks ── */
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  /* ── Editorial Typography Stacks ── */
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* ── Spacing ── */
   --space-1: 4px;
@@ -68,39 +69,43 @@
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
   /* ── Layout Dimensions ── */
-  --sidebar-width: 240px;
-  --topbar-height: 56px;
-  --max-width-content: 1040px;
+  --sidebar-width: 250px;
+  --topbar-height: 60px;
+  --max-width-content: 1080px;
 
   /* ── Transitions ── */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
+  --duration-fast: 160ms;
+  --duration-normal: 280ms;
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Light Theme Overrides */
+/* Old Library Parchment Light Theme Overrides */
 [data-theme="light"] {
-  --bg-app: #F8F8F9;
-  --bg-sidebar: #F0F0F2;
+  --bg-app: #FAF7F2;
+  --bg-sidebar: #F0ECE4;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F4F4F6;
-  --bg-card-subtle: rgba(0, 0, 0, 0.02);
+  --bg-card-hover: #F6F2EA;
+  --bg-card-subtle: rgba(44, 40, 37, 0.03);
   --bg-elevated: #FFFFFF;
-  --bg-input: rgba(0, 0, 0, 0.04);
+  --bg-input: rgba(44, 40, 37, 0.05);
+  --bg-glass: rgba(250, 247, 242, 0.88);
 
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-medium: rgba(0, 0, 0, 0.14);
-  --border-focus: #18181B;
+  --border-subtle: rgba(44, 40, 37, 0.08);
+  --border-medium: rgba(44, 40, 37, 0.16);
+  --border-focus: #B88E36;
 
-  --text-primary: #18181B;
-  --text-secondary: #71717A;
-  --text-muted: #A1A1AA;
-  --text-inverse: #FFFFFF;
+  --text-primary: #2C2825;
+  --text-secondary: #706A62;
+  --text-muted: #9C958A;
+  --text-inverse: #FAF7F2;
 
-  --accent: #18181B;
+  --accent: #B88E36;
+  --accent-gold: #B88E36;
+  --accent-teal: #487A8C;
+  --accent-terracotta: #B84A36;
 }

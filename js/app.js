@@ -27,10 +27,8 @@ class LifeAdminApp {
     this.bindFeedsModal();
     this.renderAll();
 
-    // Initialize 3D Canvas
-    setTimeout(() => {
-      this.threeHub = new LifeHub3D('three-hub-canvas');
-    }, 100);
+    // Destroy Lenis when entering app (dashboard has its own scroll)
+    if (window.destroyLenis) window.destroyLenis();
   }
 
   // ── Theme Switcher ──

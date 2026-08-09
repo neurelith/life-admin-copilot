@@ -7,156 +7,256 @@
   
   <!-- SEO & Social Meta -->
   <meta name="description" content="Life Admin Copilot turns administrative clutter into a calm, actionable personal command center.">
-  <meta name="theme-color" content="#09090B">
+  <meta name="theme-color" content="#0F0F0E">
 
-  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Editorial Typography: Instrument Serif, Space Grotesk & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-  <!-- Three.js WebGL Engine -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- High-Performance Animation Libraries (GSAP, ScrollTrigger, Lenis, Vanilla-Tilt) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
   <!-- Modular Design System Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=8">
-  <link rel="stylesheet" href="css/base.css?v=8">
-  <link rel="stylesheet" href="css/layout.css?v=8">
-  <link rel="stylesheet" href="css/components.css?v=8">
-  <link rel="stylesheet" href="css/views.css?v=8">
-  <link rel="stylesheet" href="css/landing.css?v=8">
-  <link rel="stylesheet" href="css/auth.css?v=8">
+  <link rel="stylesheet" href="css/tokens.css?v=20">
+  <link rel="stylesheet" href="css/base.css?v=20">
+  <link rel="stylesheet" href="css/layout.css?v=20">
+  <link rel="stylesheet" href="css/components.css?v=20">
+  <link rel="stylesheet" href="css/views.css?v=20">
+  <link rel="stylesheet" href="css/landing.css?v=20">
+  <link rel="stylesheet" href="css/auth.css?v=20">
 </head>
 <body>
 
+  <!-- SVG Studio Grain Texture Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Organic Aurora Animated Gradient Mesh Background -->
+  <div class="aurora-mesh">
+    <div class="aurora-blob aurora-blob-1"></div>
+    <div class="aurora-blob aurora-blob-2"></div>
+    <div class="aurora-blob aurora-blob-3"></div>
+  </div>
+
+  <!-- Custom Mouse Interactive Aura Glow -->
+  <div class="mouse-aura-glow" id="mouse-aura"></div>
+
   <!-- ============================================================
-       PHASE 1: CLEAN HERO LANDING PAGE (Linear / Raycast / Apple Aesthetic)
+       PHASE 1: EDITORIAL LANDING PAGE (Warm Brutalist + Studio Art)
        ============================================================ -->
   <div id="landing-view">
     
     <!-- Top Navigation -->
     <nav class="spatial-nav">
       <div class="spatial-brand">
-        <div class="brand-icon">L</div>
+        <div class="brand-mark-symbol">L</div>
         <span class="spatial-brand-mark">Life Admin</span>
       </div>
 
       <div class="spatial-nav-links">
-        <span class="spatial-nav-link" onclick="document.getElementById('features-section').scrollIntoView({behavior: 'smooth'})">Features</span>
-        <span class="spatial-nav-link" onclick="document.getElementById('landing-quick-drop').scrollIntoView({behavior: 'smooth'})">Live Demo</span>
-        <span class="spatial-nav-link" onclick="window.app?.openOnboardingModal()">Principles</span>
+        <span class="spatial-nav-link" onclick="document.getElementById('bento-section').scrollIntoView({behavior: 'smooth'})">Capabilities</span>
+        <span class="spatial-nav-link" onclick="document.getElementById('how-section').scrollIntoView({behavior: 'smooth'})">Workflow</span>
+        <span class="spatial-nav-link" onclick="document.getElementById('drop-section').scrollIntoView({behavior: 'smooth'})">Live Extraction</span>
       </div>
 
       <div class="spatial-nav-actions">
-        <button class="btn btn-ghost btn-sm btn-launch-app" style="color: var(--text-primary);">
-          Admin Login
+        <button class="btn btn-ghost btn-sm btn-launch-app">
+          Admin Key
         </button>
-        <button class="btn-spatial-primary btn-launch-app" id="btn-landing-enter">
-          Launch App →
+        <button class="btn btn-primary btn-launch-app" id="btn-landing-enter">
+          Open Command Center →
         </button>
       </div>
     </nav>
 
-    <!-- 3D WebGL Ambient Canvas -->
-    <div class="spatial-canvas-container" id="spatial-hero-canvas"></div>
-
-    <!-- Hero Section -->
-    <header class="spatial-hero-content">
-      <div class="spatial-hero-badge">
-        <i class="ph ph-sparkle"></i>
-        Personal Operations Layer
-      </div>
-      
-      <h1 class="spatial-hero-title">
-        Everything you need to deal with.<br>Nothing you need to remember.
+    <!-- Hero Section (0-100vh) -->
+    <header class="hero-editorial-wrap">
+      <h1 class="hero-editorial-title">
+        The silent clutter of life, <span class="accent-text">solved.</span>
       </h1>
       
-      <p class="spatial-hero-desc">
-        Life Admin Copilot turns chaotic emails, circulars, receipts, deadlines, and bookings into a calm, actionable personal command center.
+      <p class="hero-editorial-desc">
+        Life Admin Copilot turns chaotic circulars, power bills, medical follow-ups, and deadlines into a calm, actionable personal studio.
       </p>
 
-      <!-- CTA Row -->
-      <div class="spatial-cta-row">
-        <button class="btn-spatial-primary btn-launch-app">
-          Enter Command Center
-        </button>
-        <button class="btn-spatial-secondary" onclick="document.getElementById('landing-quick-drop').scrollIntoView({behavior: 'smooth'})">
-          Try Live Document Extraction
-        </button>
-      </div>
-
-      <!-- Live Quick Drop Box on Landing Page -->
-      <div class="landing-drop-box" id="landing-quick-drop">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-          <i class="ph ph-file-arrow-up" style="font-size: 1.5rem; color: var(--text-primary);"></i>
-          <span style="font-size: 13px; font-weight: 500; color: #FFFFFF;">
-            Drop any bill, ticket or notice here to test instant OCR extraction →
-          </span>
-        </div>
-      </div>
+      <button class="hero-cta-single btn-launch-app">
+        <span>Open Your Command Center</span>
+        <i class="ph ph-arrow-right-bold"></i>
+      </button>
     </header>
 
-    <!-- Features Bento Section -->
-    <section class="spatial-features-section" id="features-section">
-      <div class="spatial-section-header">
-        <h2 class="spatial-section-title">Built for Modern Administrative Overload</h2>
-        <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto; font-size: 14px;">
-          Answers the only question that matters: “What do I actually need to do?”
+    <!-- Section 2: Live Demo Drop Zone -->
+    <section class="dropzone-editorial-section" id="drop-section">
+      <h2 class="dropzone-section-title">Drop anything. We'll handle it.</h2>
+      
+      <div class="landing-drop-box" id="landing-quick-drop">
+        <div class="drop-icon-wrap">
+          <i class="ph ph-file-arrow-up"></i>
+        </div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #FFFFFF; margin-bottom: 6px;">
+          Drop any bill, ticket, circular or prescription
+        </h3>
+        <p style="font-size: 13px; color: var(--text-secondary); max-width: 460px; margin: 0 auto 16px;">
+          Instant OCR extraction detects exact due dates, fee amounts, and actionable requirements with 100% provenance verification.
+        </p>
+        <div style="display: inline-flex; gap: 8px;">
+          <span class="tag tag-subtle" style="font-size: 11px;">IIT Madras Notice</span>
+          <span class="tag tag-subtle" style="font-size: 11px;">Electricity Bill</span>
+          <span class="tag tag-subtle" style="font-size: 11px;">Apollo Prescription</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Asymmetric Bento Grid -->
+    <section class="bento-editorial-section" id="bento-section">
+      <div style="text-align: center; margin-bottom: var(--space-10);">
+        <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.4rem); font-style: italic; color: #FFFFFF; margin-bottom: 8px;">
+          Designed for Administrative Calm
+        </h2>
+        <p style="font-size: 14px; color: var(--text-secondary); max-width: 520px; margin: 0 auto;">
+          Answers the only question that matters: "What do I actually need to deal with today?"
         </p>
       </div>
 
-      <div class="spatial-cards-grid">
+      <div class="bento-editorial-grid">
         
-        <!-- Card 1: Autonomous Extraction -->
-        <div class="spatial-feature-card">
+        <!-- Hero Bento Card 1: Autonomous Extraction -->
+        <div class="bento-card bento-card-hero">
           <div>
-            <div class="spatial-card-icon"><i class="ph ph-scan"></i></div>
-            <h3 class="spatial-card-title">Autonomous OCR Extraction</h3>
-            <p class="spatial-card-desc">
-              Converts messy circulars, tax notices, and tickets into verified deadlines, fee amounts, and checklist requirements with provenance tracking.
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">CORE ENGINE</span>
+                <h3 class="bento-card-title">Autonomous Document Extraction</h3>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-in-card-scan">
+                <i class="ph ph-scan"></i> Test Extraction
+              </button>
+            </div>
+            <p class="bento-card-desc">
+              Extracts verified due dates, fee breakdown, and identity requirements from unstructured physical scans and PDFs.
             </p>
+            <div id="bento-ocr-demo-output" style="margin-top: 12px;"></div>
           </div>
-          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-            <i class="ph ph-check-circle" style="color: var(--accent-emerald);"></i> 98.4% Provenance Confidence
+
+          <div class="bento-illustration-wrap">
+            <img src="assets/illustration-ocr-scanner.png" alt="Autonomous OCR Scanner Illustration" loading="lazy">
           </div>
         </div>
 
-        <!-- Card 2: 1-Click Instant Settlement -->
-        <div class="spatial-feature-card">
+        <!-- Bento Card 2: 1-Click Settlement -->
+        <div class="bento-card bento-card-side">
           <div>
-            <div class="spatial-card-icon"><i class="ph ph-lightning"></i></div>
-            <h3 class="spatial-card-title">1-Click Instant Settlement</h3>
-            <p class="spatial-card-desc">
-              Settle electricity bills, college exam fees, and travel deposits directly via UPI / Card with instant transaction receipts and automatic closure.
+            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">SETTLEMENT</span>
+            <h3 class="bento-card-title">1-Click Instant Payment</h3>
+            <p class="bento-card-desc">
+              Settle power bills, exam fees, and travel deposits instantly via UPI with transaction receipts.
             </p>
+            <button class="btn btn-primary btn-sm" id="btn-in-card-settle" style="width: 100%; margin-top: 12px; justify-content: center;">
+              Pay ₹2,340 Electricity Bill
+            </button>
           </div>
-          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-            <i class="ph ph-shield-check" style="color: var(--accent-blue);"></i> Instant Settlement Gateway
+
+          <div class="bento-illustration-wrap">
+            <img src="assets/illustration-instant-settlement.png" alt="1-Click Settlement Illustration" loading="lazy">
           </div>
         </div>
 
-        <!-- Card 3: Multi-Profile Family & Care Mode -->
-        <div class="spatial-feature-card">
+        <!-- Bento Card 3: Multi-Profile Support -->
+        <div class="bento-card bento-card-half">
           <div>
-            <div class="spatial-card-icon"><i class="ph ph-users-three"></i></div>
-            <h3 class="spatial-card-title">Multi-Profile Support</h3>
-            <p class="spatial-card-desc">
-              Seamlessly toggle between personal administrative tasks, elderly parents' hospital follow-ups, and business tax obligations without context mixing.
+            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">MULTI-VAULT</span>
+            <h3 class="bento-card-title">Personal & Family Care Profiles</h3>
+            <p class="bento-card-desc">
+              Toggle between personal obligations, elderly parents' hospital follow-ups, and business tax filings without context mixing.
             </p>
           </div>
-          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-            <i class="ph ph-arrows-left-right" style="color: var(--accent-amber);"></i> 3 Dedicated Operational Profiles
+
+          <div class="bento-illustration-wrap" style="height: 160px;">
+            <img src="assets/illustration-multi-profile.png" alt="Multi-Profile Illustration" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Bento Card 4: Automated Streams -->
+        <div class="bento-card bento-card-half">
+          <div>
+            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">LIVE FEEDS</span>
+            <h3 class="bento-card-title">WhatsApp & Email Ingestion</h3>
+            <p class="bento-card-desc">
+              Automated ingestion syncs circulars and notices directly from school groups, utility providers, and email attachments into your workspace.
+            </p>
+          </div>
+          <div style="font-size: 12px; color: var(--accent-gold); font-weight: 600; margin-top: 16px;">
+            ✓ Real-time Sync Active
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Footer on Landing -->
-    <footer style="border-top: 1px solid var(--border-subtle); padding: var(--space-8); text-align: center; color: var(--text-muted); font-size: 12px; margin-top: auto;">
-      <span>Life Admin Copilot · Personal Operations Layer</span>
+    <!-- Section 4: How It Works Scroll Storytelling -->
+    <section class="how-it-works-section" id="how-section">
+      <div style="text-align: center;">
+        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.2rem); font-style: italic; color: #FFFFFF;">
+          Three Steps to Absolute Peace of Mind
+        </h2>
+      </div>
+
+      <div class="how-steps-grid">
+        <div class="how-step-card">
+          <div class="step-num">01</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #FFFFFF; margin-bottom: 8px;">Capture</h3>
+          <p style="font-size: 13px; color: var(--text-secondary);">
+            Snap a photo, drag a PDF, or let WhatsApp sync incoming notices automatically.
+          </p>
+        </div>
+
+        <div class="how-step-card">
+          <div class="step-num">02</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #FFFFFF; margin-bottom: 8px;">Extract</h3>
+          <p style="font-size: 13px; color: var(--text-secondary);">
+            AI pinpoints exact deadlines, payment amounts, required documents, and provenance context.
+          </p>
+        </div>
+
+        <div class="how-step-card">
+          <div class="step-num">03</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #FFFFFF; margin-bottom: 8px;">Settle</h3>
+          <p style="font-size: 13px; color: var(--text-secondary);">
+            Resolve obligations in 1-tap via UPI or archive verified proof into your secure vault.
+          </p>
+        </div>
+      </div>
+
+      <div class="bento-illustration-wrap" style="height: 320px; margin-top: 32px;">
+        <img src="assets/illustration-how-it-works.png" alt="How It Works Illustration" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Section 5: Stats & Social Proof -->
+    <section class="stats-section">
+      <div>
+        <div class="stat-number" data-value="98.4">98.4%</div>
+        <div class="stat-label">Extraction Accuracy</div>
+      </div>
+      <div>
+        <div class="stat-number" data-value="3">3s</div>
+        <div class="stat-label">Average Processing Time</div>
+      </div>
+      <div>
+        <div class="stat-number" data-value="100">100%</div>
+        <div class="stat-label">Provenance Verification</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: var(--space-8); text-align: center; color: var(--text-muted); font-size: 13px; margin-top: auto;">
+      <span>Life Admin Copilot · Personal Operations Studio</span>
     </footer>
 
   </div>
@@ -166,7 +266,7 @@
        ============================================================ -->
   <div id="auth-modal">
     <div class="auth-card">
-      <h2 class="auth-title">Admin Access</h2>
+      <h2 class="auth-title" style="font-family: var(--font-serif); font-size: 1.8rem;">Admin Gateway</h2>
       <p class="auth-subtitle">Enter administrator password or select a demo profile.</p>
 
       <!-- Admin Password Form -->
@@ -226,7 +326,7 @@
     <aside class="app-sidebar" id="app-sidebar">
       <div class="sidebar-brand">
         <div class="brand-icon">L</div>
-        <div class="brand-title">Life Admin</div>
+        <div class="brand-title" style="font-family: var(--font-serif); font-size: 1.3rem;">Life Admin</div>
       </div>
 
       <nav class="sidebar-nav">
@@ -271,7 +371,7 @@
       <!-- Sidebar User Footer & Return to Landing -->
       <div class="sidebar-footer">
         <button class="btn btn-ghost btn-sm" id="btn-return-landing" style="width: 100%; justify-content: flex-start; margin-bottom: 6px; font-size: 11px; color: var(--text-muted);">
-          <i class="ph ph-arrow-left"></i> Landing Page
+          <i class="ph ph-arrow-left"></i> Landing Studio
         </button>
 
         <div class="user-profile-btn">
@@ -332,29 +432,6 @@
       </button>
 
     </div>
-
-    <!-- ── Mobile Bottom Navigation Bar ── -->
-    <nav class="mobile-nav">
-      <button class="mobile-nav-item active" data-view="today">
-        <i class="ph ph-sun-horizon"></i>
-        <span>Today</span>
-      </button>
-      <button class="mobile-nav-item" data-view="inbox">
-        <i class="ph ph-tray"></i>
-        <span>Inbox</span>
-      </button>
-      <button class="mobile-nav-capture-btn" id="mobile-fab-capture">
-        <i class="ph ph-plus-bold"></i>
-      </button>
-      <button class="mobile-nav-item" data-view="tasks">
-        <i class="ph ph-check-square-offset"></i>
-        <span>Tasks</span>
-      </button>
-      <button class="mobile-nav-item" data-view="documents">
-        <i class="ph ph-files"></i>
-        <span>Docs</span>
-      </button>
-    </nav>
 
   </div>
 
@@ -428,7 +505,7 @@
       <div class="onboarding-icon">
         <i class="ph ph-shield-star"></i>
       </div>
-      <h2 class="onboarding-title">Let’s get your life out of your head.</h2>
+      <h2 class="onboarding-title" style="font-family: var(--font-serif); font-size: 1.8rem;">Let’s get your life out of your head.</h2>
       <p class="onboarding-desc">
         Modern life creates endless clutter—bills, circulars, receipts, deadlines, and bookings.
         <br><br>
@@ -437,7 +514,7 @@
         <strong style="color: var(--text-primary);">“What do I actually need to do?”</strong>
       </p>
       <div style="display: flex; gap: var(--space-3); justify-content: center;">
-        <button class="btn btn-secondary" id="btn-dismiss-onboarding">Explore Demo</button>
+        <button class="btn btn-secondary" id="btn-dismiss-onboarding">Explore Studio</button>
         <button class="btn btn-primary" id="btn-onboarding-capture">+ Drop Your First Document</button>
       </div>
     </div>
@@ -447,13 +524,12 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Application Scripts -->
-  <script src="js/data.js?v=8"></script>
-  <script src="js/three-scene.js?v=8"></script>
-  <script src="js/three-spatial-hero.js?v=8"></script>
-  <script src="js/interactions.js?v=8"></script>
-  <script src="js/auth.js?v=8"></script>
-  <script src="js/landing-interactive.js?v=8"></script>
-  <script src="js/app.js?v=8"></script>
+  <script src="js/data.js?v=20"></script>
+  <script src="js/interactions.js?v=20"></script>
+  <script src="js/auth.js?v=20"></script>
+  <script src="js/landing-animations.js?v=20"></script>
+  <script src="js/landing-interactive.js?v=20"></script>
+  <script src="js/app.js?v=20"></script>
   
   <script>
     document.getElementById('btn-quick-onboarding')?.addEventListener('click', () => {
