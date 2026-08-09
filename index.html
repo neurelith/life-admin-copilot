@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Admin Copilot — Personal Operations Layer</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Life Admin Copilot turns administrative clutter into a calm, actionable personal command center.">
+  <meta name="theme-color" content="#09090B">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Three.js WebGL Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Modular Design System Styles -->
+  <link rel="stylesheet" href="css/tokens.css?v=8">
+  <link rel="stylesheet" href="css/base.css?v=8">
+  <link rel="stylesheet" href="css/layout.css?v=8">
+  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/views.css?v=8">
+  <link rel="stylesheet" href="css/landing.css?v=8">
+  <link rel="stylesheet" href="css/auth.css?v=8">
+</head>
+<body>
+
+  <!-- ============================================================
+       PHASE 1: CLEAN HERO LANDING PAGE (Linear / Raycast / Apple Aesthetic)
+       ============================================================ -->
+  <div id="landing-view">
+    
+    <!-- Top Navigation -->
+    <nav class="spatial-nav">
+      <div class="spatial-brand">
+        <div class="brand-icon">L</div>
+        <span class="spatial-brand-mark">Life Admin</span>
+      </div>
+
+      <div class="spatial-nav-links">
+        <span class="spatial-nav-link" onclick="document.getElementById('features-section').scrollIntoView({behavior: 'smooth'})">Features</span>
+        <span class="spatial-nav-link" onclick="document.getElementById('landing-quick-drop').scrollIntoView({behavior: 'smooth'})">Live Demo</span>
+        <span class="spatial-nav-link" onclick="window.app?.openOnboardingModal()">Principles</span>
+      </div>
+
+      <div class="spatial-nav-actions">
+        <button class="btn btn-ghost btn-sm btn-launch-app" style="color: var(--text-primary);">
+          Admin Login
+        </button>
+        <button class="btn-spatial-primary btn-launch-app" id="btn-landing-enter">
+          Launch App →
+        </button>
+      </div>
+    </nav>
+
+    <!-- 3D WebGL Ambient Canvas -->
+    <div class="spatial-canvas-container" id="spatial-hero-canvas"></div>
+
+    <!-- Hero Section -->
+    <header class="spatial-hero-content">
+      <div class="spatial-hero-badge">
+        <i class="ph ph-sparkle"></i>
+        Personal Operations Layer
+      </div>
+      
+      <h1 class="spatial-hero-title">
+        Everything you need to deal with.<br>Nothing you need to remember.
+      </h1>
+      
+      <p class="spatial-hero-desc">
+        Life Admin Copilot turns chaotic emails, circulars, receipts, deadlines, and bookings into a calm, actionable personal command center.
+      </p>
+
+      <!-- CTA Row -->
+      <div class="spatial-cta-row">
+        <button class="btn-spatial-primary btn-launch-app">
+          Enter Command Center
+        </button>
+        <button class="btn-spatial-secondary" onclick="document.getElementById('landing-quick-drop').scrollIntoView({behavior: 'smooth'})">
+          Try Live Document Extraction
+        </button>
+      </div>
+
+      <!-- Live Quick Drop Box on Landing Page -->
+      <div class="landing-drop-box" id="landing-quick-drop">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+          <i class="ph ph-file-arrow-up" style="font-size: 1.5rem; color: var(--text-primary);"></i>
+          <span style="font-size: 13px; font-weight: 500; color: #FFFFFF;">
+            Drop any bill, ticket or notice here to test instant OCR extraction →
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Bento Section -->
+    <section class="spatial-features-section" id="features-section">
+      <div class="spatial-section-header">
+        <h2 class="spatial-section-title">Built for Modern Administrative Overload</h2>
+        <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto; font-size: 14px;">
+          Answers the only question that matters: “What do I actually need to do?”
+        </p>
+      </div>
+
+      <div class="spatial-cards-grid">
+        
+        <!-- Card 1: Autonomous Extraction -->
+        <div class="spatial-feature-card">
+          <div>
+            <div class="spatial-card-icon"><i class="ph ph-scan"></i></div>
+            <h3 class="spatial-card-title">Autonomous OCR Extraction</h3>
+            <p class="spatial-card-desc">
+              Converts messy circulars, tax notices, and tickets into verified deadlines, fee amounts, and checklist requirements with provenance tracking.
+            </p>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <i class="ph ph-check-circle" style="color: var(--accent-emerald);"></i> 98.4% Provenance Confidence
+          </div>
+        </div>
+
+        <!-- Card 2: 1-Click Instant Settlement -->
+        <div class="spatial-feature-card">
+          <div>
+            <div class="spatial-card-icon"><i class="ph ph-lightning"></i></div>
+            <h3 class="spatial-card-title">1-Click Instant Settlement</h3>
+            <p class="spatial-card-desc">
+              Settle electricity bills, college exam fees, and travel deposits directly via UPI / Card with instant transaction receipts and automatic closure.
+            </p>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <i class="ph ph-shield-check" style="color: var(--accent-blue);"></i> Instant Settlement Gateway
+          </div>
+        </div>
+
+        <!-- Card 3: Multi-Profile Family & Care Mode -->
+        <div class="spatial-feature-card">
+          <div>
+            <div class="spatial-card-icon"><i class="ph ph-users-three"></i></div>
+            <h3 class="spatial-card-title">Multi-Profile Support</h3>
+            <p class="spatial-card-desc">
+              Seamlessly toggle between personal administrative tasks, elderly parents' hospital follow-ups, and business tax obligations without context mixing.
+            </p>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <i class="ph ph-arrows-left-right" style="color: var(--accent-amber);"></i> 3 Dedicated Operational Profiles
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer on Landing -->
+    <footer style="border-top: 1px solid var(--border-subtle); padding: var(--space-8); text-align: center; color: var(--text-muted); font-size: 12px; margin-top: auto;">
+      <span>Life Admin Copilot · Personal Operations Layer</span>
+    </footer>
+
+  </div>
+
+  <!-- ============================================================
+       PHASE 2: AUTHENTICATION MODAL (Admin Password & Profiles)
+       ============================================================ -->
+  <div id="auth-modal">
+    <div class="auth-card">
+      <h2 class="auth-title">Admin Access</h2>
+      <p class="auth-subtitle">Enter administrator password or select a demo profile.</p>
+
+      <!-- Admin Password Form -->
+      <form class="admin-password-form" id="admin-auth-form">
+        <div class="auth-input-wrap">
+          <i class="ph ph-lock-key"></i>
+          <input type="password" id="admin-password-input" class="admin-password-input" placeholder="Password (default: admin)" autocomplete="current-password">
+        </div>
+        <div class="auth-error-msg" id="admin-auth-error"></div>
+        <button type="submit" class="btn-auth-admin-submit">
+          Unlock Command Center
+        </button>
+        <div class="quick-admin-fill-hint">
+          <span>Password: <code>admin</code></span>
+          <button type="button" id="btn-quick-admin-fill">Auto-Fill & Log In</button>
+        </div>
+      </form>
+
+      <!-- Demo Profiles Quick Switcher -->
+      <div class="demo-profiles-section">
+        <div class="demo-profile-label">Or continue with demo profile:</div>
+        
+        <div class="demo-profile-chip" data-demo-profile="personal">
+          <div>
+            <div class="demo-profile-name">Alex (Default)</div>
+            <div class="demo-profile-desc">Personal & Household Obligations</div>
+          </div>
+          <span class="tag tag-subtle" style="font-size: 10px;">Select →</span>
+        </div>
+
+        <div class="demo-profile-chip" data-demo-profile="family">
+          <div>
+            <div class="demo-profile-name">Dr. Patel (Family Care Mode)</div>
+            <div class="demo-profile-desc">Elderly Parents Medical & Cardiology</div>
+          </div>
+          <span class="tag tag-subtle" style="font-size: 10px;">Select →</span>
+        </div>
+
+        <div class="demo-profile-chip" data-demo-profile="business">
+          <div>
+            <div class="demo-profile-name">Sarah (Business & Tax)</div>
+            <div class="demo-profile-desc">Consulting Contracts & GST Filings</div>
+          </div>
+          <span class="tag tag-subtle" style="font-size: 10px;">Select →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PHASE 3: COMMAND CENTER APP SHELL
+       ============================================================ -->
+  <div class="app-root" id="app-shell-root" style="display: none;">
+
+    <!-- ── Desktop Sidebar Navigation ── -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">L</div>
+        <div class="brand-title">Life Admin</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="today" id="nav-today">
+          <div class="nav-item-left">
+            <i class="ph ph-sun-horizon"></i>
+            <span>Today</span>
+          </div>
+        </button>
+
+        <button class="nav-item" data-view="inbox" id="nav-inbox">
+          <div class="nav-item-left">
+            <i class="ph ph-tray"></i>
+            <span>Inbox</span>
+          </div>
+          <span class="nav-badge" id="badge-inbox">5</span>
+        </button>
+
+        <button class="nav-item" data-view="tasks" id="nav-tasks">
+          <div class="nav-item-left">
+            <i class="ph ph-check-square-offset"></i>
+            <span>Tasks</span>
+          </div>
+          <span class="nav-badge urgent" id="badge-tasks">5</span>
+        </button>
+
+        <button class="nav-item" data-view="calendar" id="nav-calendar">
+          <div class="nav-item-left">
+            <i class="ph ph-calendar-blank"></i>
+            <span>Calendar</span>
+          </div>
+        </button>
+
+        <button class="nav-item" data-view="documents" id="nav-documents">
+          <div class="nav-item-left">
+            <i class="ph ph-files"></i>
+            <span>Documents</span>
+          </div>
+        </button>
+      </nav>
+
+      <!-- Sidebar User Footer & Return to Landing -->
+      <div class="sidebar-footer">
+        <button class="btn btn-ghost btn-sm" id="btn-return-landing" style="width: 100%; justify-content: flex-start; margin-bottom: 6px; font-size: 11px; color: var(--text-muted);">
+          <i class="ph ph-arrow-left"></i> Landing Page
+        </button>
+
+        <div class="user-profile-btn">
+          <div class="user-avatar">A</div>
+          <div class="user-meta">
+            <div class="user-name">Alex</div>
+            <div class="user-status">
+              <span class="status-dot"></span>
+              <span>Personal Operations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Main App Shell ── -->
+    <div class="app-main">
+
+      <!-- Sticky Topbar Header -->
+      <header class="app-topbar">
+        <button class="topbar-search-trigger" id="topbar-search-trigger">
+          <i class="ph ph-magnifying-glass"></i>
+          <span>Search your life…</span>
+          <span class="kbd-shortcut">⌘K</span>
+        </button>
+
+        <div class="topbar-actions">
+          <!-- Theme Switcher -->
+          <button class="icon-btn" id="btn-toggle-theme" title="Switch Theme">
+            <i class="ph ph-moon-stars" id="theme-icon"></i>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" id="btn-quick-onboarding" title="Quick Orientation">
+            <i class="ph ph-info"></i>
+            <span>Principles</span>
+          </button>
+          
+          <button class="icon-btn" id="btn-topbar-bell" title="System Notifications">
+            <i class="ph ph-bell"></i>
+            <span class="icon-btn-badge"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <main class="app-content">
+        <section id="view-today" class="app-view active"></section>
+        <section id="view-inbox" class="app-view"></section>
+        <section id="view-tasks" class="app-view"></section>
+        <section id="view-calendar" class="app-view"></section>
+        <section id="view-documents" class="app-view"></section>
+      </main>
+
+      <!-- Desktop Floating Capture Button -->
+      <button class="btn-shimmer fab-capture" id="fab-capture">
+        <i class="ph ph-plus-bold"></i>
+        <span>Capture</span>
+      </button>
+
+    </div>
+
+    <!-- ── Mobile Bottom Navigation Bar ── -->
+    <nav class="mobile-nav">
+      <button class="mobile-nav-item active" data-view="today">
+        <i class="ph ph-sun-horizon"></i>
+        <span>Today</span>
+      </button>
+      <button class="mobile-nav-item" data-view="inbox">
+        <i class="ph ph-tray"></i>
+        <span>Inbox</span>
+      </button>
+      <button class="mobile-nav-capture-btn" id="mobile-fab-capture">
+        <i class="ph ph-plus-bold"></i>
+      </button>
+      <button class="mobile-nav-item" data-view="tasks">
+        <i class="ph ph-check-square-offset"></i>
+        <span>Tasks</span>
+      </button>
+      <button class="mobile-nav-item" data-view="documents">
+        <i class="ph ph-files"></i>
+        <span>Docs</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- ── Slide-Out Context Inspector Drawer ── -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="context-drawer" id="context-drawer">
+    <div class="drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <i class="ph ph-sparkle" style="color: var(--accent);"></i>
+        <h3 style="font-size: var(--text-base); font-weight: 600;" id="drawer-title">Item Inspection</h3>
+      </div>
+      <button class="icon-btn" id="btn-close-drawer"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="drawer-body" id="drawer-body-content"></div>
+    <div class="drawer-footer">
+      <button class="btn btn-secondary btn-sm" id="btn-drawer-snooze"><i class="ph ph-clock"></i> Snooze</button>
+      <button class="btn btn-primary btn-sm" id="drawer-action-complete"><i class="ph ph-check"></i> Complete</button>
+    </div>
+  </aside>
+
+  <!-- ── Capture Modal Experience (Laser Scanner) ── -->
+  <div class="modal-backdrop" id="capture-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="ph ph-scan" style="color: var(--accent); font-size: 1.25rem;"></i>
+          <h2 style="font-size: var(--text-md); font-weight: 600;">Capture & Extract Life Clutter</h2>
+        </div>
+        <button class="icon-btn" id="btn-close-capture"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="modal-body" id="capture-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ── Instant Bill Settlement Modal ── -->
+  <div class="modal-backdrop" id="payment-modal">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-body" id="payment-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ── Feeds Sync Modal (WhatsApp & Gmail Stream) ── -->
+  <div class="modal-backdrop" id="feeds-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="ph ph-broadcast" style="color: var(--accent); font-size: 1.25rem;"></i>
+          <h2 style="font-size: var(--text-md); font-weight: 600;">Automated Ingestion Feeds</h2>
+        </div>
+        <button class="icon-btn" onclick="document.getElementById('feeds-modal').classList.remove('open')"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="modal-body" id="feeds-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ── Search / Command Palette ── -->
+  <div class="modal-backdrop" id="search-modal">
+    <div class="modal-card search-modal-card">
+      <div class="search-input-wrap">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" id="search-input" class="search-input" placeholder="Search your life… (e.g. bills due, passport, trip docs)" autocomplete="off">
+        <span class="kbd-shortcut">ESC</span>
+      </div>
+      <div class="search-suggestions-wrap" id="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- ── 1-Screen Minimal Orientation Modal ── -->
+  <div class="modal-backdrop" id="onboarding-modal">
+    <div class="modal-card onboarding-card">
+      <div class="onboarding-icon">
+        <i class="ph ph-shield-star"></i>
+      </div>
+      <h2 class="onboarding-title">Let’s get your life out of your head.</h2>
+      <p class="onboarding-desc">
+        Modern life creates endless clutter—bills, circulars, receipts, deadlines, and bookings.
+        <br><br>
+        Life Admin Copilot extracts meaningful obligations and answers:
+        <br>
+        <strong style="color: var(--text-primary);">“What do I actually need to do?”</strong>
+      </p>
+      <div style="display: flex; gap: var(--space-3); justify-content: center;">
+        <button class="btn btn-secondary" id="btn-dismiss-onboarding">Explore Demo</button>
+        <button class="btn btn-primary" id="btn-onboarding-capture">+ Drop Your First Document</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast Notifications ── -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js?v=8"></script>
+  <script src="js/three-scene.js?v=8"></script>
+  <script src="js/three-spatial-hero.js?v=8"></script>
+  <script src="js/interactions.js?v=8"></script>
+  <script src="js/auth.js?v=8"></script>
+  <script src="js/landing-interactive.js?v=8"></script>
+  <script src="js/app.js?v=8"></script>
+  
+  <script>
+    document.getElementById('btn-quick-onboarding')?.addEventListener('click', () => {
+      document.getElementById('onboarding-modal')?.classList.add('open');
+    });
+    document.getElementById('btn-dismiss-onboarding')?.addEventListener('click', () => {
+      document.getElementById('onboarding-modal')?.classList.remove('open');
+    });
+    document.getElementById('btn-onboarding-capture')?.addEventListener('click', () => {
+      document.getElementById('onboarding-modal')?.classList.remove('open');
+      window.app?.openCaptureModal();
+    });
+  </script>
+</body>
+</html>

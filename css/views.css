@@ -1,0 +1,492 @@
+/* ============================================================
+   LIFE ADMIN COPILOT — View-Specific Layouts
+   Today, Inbox, Tasks, Calendar, Documents, Capture, Search
+   ============================================================ */
+
+/* ── View Switcher Visibility ── */
+.app-view {
+  display: none;
+}
+
+.app-view.active {
+  display: block;
+  animation: fadeIn var(--duration-normal) var(--ease-out);
+}
+
+/* ────────────────────────────────────────────────────────────
+   1. TODAY VIEW
+   ──────────────────────────────────────────────────────────── */
+.today-header {
+  margin-bottom: var(--space-8);
+}
+
+.today-greeting {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.today-subtitle {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+
+.today-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--urgency-high-bg);
+  color: var(--urgency-high);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  margin-top: var(--space-3);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. INBOX TRIAGE VIEW
+   ──────────────────────────────────────────────────────────── */
+.view-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.view-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.view-title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.view-count-badge {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: var(--weight-medium);
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--bg-sidebar);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.filter-chip {
+  padding: 4px 10px;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast);
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  color: var(--text-primary);
+}
+
+.filter-chip.active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-1);
+  font-weight: var(--weight-semibold);
+}
+
+.triage-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-subtle);
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.triage-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. TASKS VIEW & CONTEXTUAL SLIDE-OUT
+   ──────────────────────────────────────────────────────────── */
+.task-group {
+  margin-bottom: var(--space-8);
+}
+
+.task-group-title {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+/* ────────────────────────────────────────────────────────────
+   4. CALENDAR TIMELINE VIEW (Editorial Agenda)
+   ──────────────────────────────────────────────────────────── */
+.timeline-day-group {
+  margin-bottom: var(--space-8);
+}
+
+.timeline-day-header {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.timeline-day-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--duration-fast);
+  cursor: pointer;
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.timeline-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: var(--space-3);
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.timeline-title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.timeline-type-pill {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+/* ────────────────────────────────────────────────────────────
+   5. DOCUMENTS VIEW
+   ──────────────────────────────────────────────────────────── */
+.doc-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.doc-folder-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-1);
+  transition: all var(--duration-fast);
+  cursor: pointer;
+}
+
+.doc-folder-card:hover {
+  border-color: var(--border-default);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-2);
+}
+
+.doc-folder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.doc-folder-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.doc-folder-name {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.doc-folder-meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Document Table List */
+.doc-table-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.doc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--duration-fast);
+  cursor: pointer;
+}
+
+.doc-row:last-child {
+  border-bottom: none;
+}
+
+.doc-row:hover {
+  background: var(--bg-hover);
+}
+
+/* ────────────────────────────────────────────────────────────
+   6. CAPTURE MODAL EXPERIENCE
+   ──────────────────────────────────────────────────────────── */
+.capture-dropzone {
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.capture-dropzone:hover, .capture-dropzone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.capture-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.capture-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+.capture-option-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.capture-option-btn i {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.sample-pills-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.sample-pill {
+  font-size: var(--text-xs);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.sample-pill:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+/* ────────────────────────────────────────────────────────────
+   7. COMMAND / SEARCH PALETTE
+   ──────────────────────────────────────────────────────────── */
+.search-modal-card {
+  max-width: 640px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-overlay);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.search-input-wrap i {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.search-input {
+  flex: 1;
+  font-size: var(--text-md);
+  color: var(--text-primary);
+}
+
+.search-suggestions-wrap {
+  padding: var(--space-4) var(--space-6);
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.search-prompt-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.search-suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--duration-fast);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  margin-bottom: 2px;
+}
+
+.search-suggestion-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ────────────────────────────────────────────────────────────
+   8. MINIMAL ONBOARDING OVERLAY
+   ──────────────────────────────────────────────────────────── */
+.onboarding-card {
+  max-width: 480px;
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+.onboarding-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto var(--space-4);
+}
+
+.onboarding-title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.onboarding-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}

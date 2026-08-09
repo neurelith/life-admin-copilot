@@ -1,0 +1,5 @@
+temp_repo/
+.DS_Store
+Thumbs.db
+node_modules/
+.env*

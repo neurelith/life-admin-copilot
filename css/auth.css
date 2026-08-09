@@ -1,0 +1,175 @@
+/* ============================================================
+   LIFE ADMIN COPILOT — Clean Authentication Modal (Linear / Apple Style)
+   ============================================================ */
+
+#auth-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-spring);
+}
+
+#auth-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-6);
+  text-align: center;
+  position: relative;
+}
+
+.auth-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: var(--space-1);
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+/* ── Admin Password Form ── */
+.admin-password-form {
+  margin-bottom: var(--space-4);
+  text-align: left;
+}
+
+.auth-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-input-wrap i {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.admin-password-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 12px 10px 36px;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  outline: none;
+  transition: all var(--duration-fast);
+}
+
+.admin-password-input:focus {
+  border-color: var(--border-focus);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-error-msg {
+  font-size: 12px;
+  color: var(--urgency-high);
+  margin-top: 4px;
+  display: none;
+}
+
+.btn-auth-admin-submit {
+  width: 100%;
+  margin-top: var(--space-3);
+  background: #FFFFFF;
+  color: #09090B;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  border: none;
+}
+
+.btn-auth-admin-submit:hover {
+  background: #F4F4F5;
+  transform: translateY(-1px);
+}
+
+.quick-admin-fill-hint {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.quick-admin-fill-hint button {
+  color: #FFFFFF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ── Demo Profiles Switcher ── */
+.demo-profiles-section {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-4);
+  text-align: left;
+  margin-top: var(--space-4);
+}
+
+.demo-profile-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.demo-profile-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.demo-profile-chip:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-medium);
+}
+
+.demo-profile-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.demo-profile-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+}

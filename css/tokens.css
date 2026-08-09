@@ -1,0 +1,106 @@
+/* ============================================================
+   LIFE ADMIN COPILOT — Design Tokens (Linear / Raycast / Apple Aesthetic)
+   Clean obsidian dark palette, precision 1px borders, crisp typography.
+   ============================================================ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg-app: #09090B;
+  --bg-sidebar: #0E0E11;
+  --bg-card: #131316;
+  --bg-card-hover: #18181D;
+  --bg-card-subtle: rgba(255, 255, 255, 0.03);
+  --bg-elevated: #1C1C21;
+  --bg-input: rgba(255, 255, 255, 0.05);
+
+  /* ── Borders ── */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-focus: #FFFFFF;
+
+  /* ── Text ── */
+  --text-primary: #EDEDED;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-inverse: #09090B;
+
+  /* ── Accents & Urgency ── */
+  --accent: #FFFFFF;
+  --accent-blue: #3B82F6;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --urgency-high: #EF4444;
+  --urgency-high-bg: rgba(239, 68, 68, 0.1);
+
+  /* ── Categories ── */
+  --cat-education: #3B82F6;
+  --cat-education-bg: rgba(59, 130, 246, 0.12);
+  --cat-finance: #10B981;
+  --cat-finance-bg: rgba(16, 185, 129, 0.12);
+  --cat-travel: #06B6D4;
+  --cat-travel-bg: rgba(6, 182, 212, 0.12);
+  --cat-health: #EC4899;
+  --cat-health-bg: rgba(236, 72, 153, 0.12);
+  --cat-warranty: #8B5CF6;
+  --cat-warranty-bg: rgba(139, 92, 246, 0.12);
+  --cat-housing: #F97316;
+  --cat-housing-bg: rgba(249, 115, 22, 0.12);
+  --cat-identity: #6366F1;
+  --cat-identity-bg: rgba(99, 102, 241, 0.12);
+
+  /* ── Typography Stacks ── */
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Radii ── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Layout Dimensions ── */
+  --sidebar-width: 240px;
+  --topbar-height: 56px;
+  --max-width-content: 1040px;
+
+  /* ── Transitions ── */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] {
+  --bg-app: #F8F8F9;
+  --bg-sidebar: #F0F0F2;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F4F4F6;
+  --bg-card-subtle: rgba(0, 0, 0, 0.02);
+  --bg-elevated: #FFFFFF;
+  --bg-input: rgba(0, 0, 0, 0.04);
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.14);
+  --border-focus: #18181B;
+
+  --text-primary: #18181B;
+  --text-secondary: #71717A;
+  --text-muted: #A1A1AA;
+  --text-inverse: #FFFFFF;
+
+  --accent: #18181B;
+}
