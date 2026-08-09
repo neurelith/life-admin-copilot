@@ -17,20 +17,21 @@
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-  <!-- High-Performance Animation Libraries (GSAP, ScrollTrigger, Lenis, Vanilla-Tilt) -->
+  <!-- High-Performance Animation Libraries (Three.js, GSAP, ScrollTrigger, Lenis, Vanilla-Tilt) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
   <!-- Modular Design System Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=20">
-  <link rel="stylesheet" href="css/base.css?v=20">
-  <link rel="stylesheet" href="css/layout.css?v=20">
-  <link rel="stylesheet" href="css/components.css?v=20">
-  <link rel="stylesheet" href="css/views.css?v=20">
-  <link rel="stylesheet" href="css/landing.css?v=20">
-  <link rel="stylesheet" href="css/auth.css?v=20">
+  <link rel="stylesheet" href="css/tokens.css?v=22">
+  <link rel="stylesheet" href="css/base.css?v=22">
+  <link rel="stylesheet" href="css/layout.css?v=22">
+  <link rel="stylesheet" href="css/components.css?v=22">
+  <link rel="stylesheet" href="css/views.css?v=22">
+  <link rel="stylesheet" href="css/landing.css?v=22">
+  <link rel="stylesheet" href="css/auth.css?v=22">
 </head>
 <body>
 
@@ -89,6 +90,9 @@
         <span>Open Your Command Center</span>
         <i class="ph ph-arrow-right-bold"></i>
       </button>
+
+      <!-- Upgraded 3D Spatial Holographic Hero Centerpiece -->
+      <div class="spatial-canvas-container" id="spatial-hero-canvas" title="Move mouse to interact with 3D spatial document vault"></div>
     </header>
 
     <!-- Section 2: Live Demo Drop Zone -->
@@ -524,14 +528,22 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Application Scripts -->
-  <script src="js/data.js?v=20"></script>
-  <script src="js/interactions.js?v=20"></script>
-  <script src="js/auth.js?v=20"></script>
-  <script src="js/landing-animations.js?v=20"></script>
-  <script src="js/landing-interactive.js?v=20"></script>
-  <script src="js/app.js?v=20"></script>
+  <script src="js/data.js?v=21"></script>
+  <script src="js/three-spatial-hero.js?v=21"></script>
+  <script src="js/interactions.js?v=21"></script>
+  <script src="js/auth.js?v=21"></script>
+  <script src="js/landing-animations.js?v=21"></script>
+  <script src="js/landing-interactive.js?v=21"></script>
+  <script src="js/app.js?v=21"></script>
   
   <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (typeof SpatialHero3D !== 'undefined') {
+          new SpatialHero3D('spatial-hero-canvas');
+        }
+      }, 100);
+    });
     document.getElementById('btn-quick-onboarding')?.addEventListener('click', () => {
       document.getElementById('onboarding-modal')?.classList.add('open');
     });

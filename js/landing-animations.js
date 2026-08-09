@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. GSAP Entrance Timeline (Hero)
+  // 4. GSAP Entrance Timeline & ScrollTrigger
   if (typeof gsap !== 'undefined') {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.0 } });
 
@@ -62,34 +62,41 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 0.8
     }, '-=0.5');
 
-    // GSAP ScrollTrigger Animations for Bento Grid
+    // GSAP ScrollTrigger Animations
     if (typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
+
+      // CRITICAL FIX: Link Lenis to GSAP ScrollTrigger
+      if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
 
       gsap.from('.bento-card', {
         scrollTrigger: {
           trigger: '.bento-editorial-grid',
-          start: 'top 95%',
+          start: 'top 98%',
           toggleActions: 'play none none none'
         },
-        y: 40,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: 'power3.out'
+        y: 24,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: 'power2.out'
       });
 
       gsap.from('.how-step-card', {
         scrollTrigger: {
           trigger: '.how-steps-grid',
-          start: 'top 95%',
+          start: 'top 98%',
           toggleActions: 'play none none none'
         },
-        y: 40,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out'
+        y: 24,
+        stagger: 0.12,
+        duration: 0.7,
+        ease: 'power2.out'
       });
 
       // Stat Counters Reveal
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ScrollTrigger.create({
           trigger: stat,
-          start: 'top 85%',
+          start: 'top 90%',
           onEnter: () => {
             gsap.fromTo(stat, 
               { innerText: 0 }, 
@@ -113,6 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       });
+
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 300);
     }
   }
 

@@ -145,6 +145,21 @@
   box-shadow: 0 16px 40px rgba(232, 200, 114, 0.35);
 }
 
+/* ── 3D Spatial Holographic Canvas Centerpiece ── */
+.spatial-canvas-container {
+  width: 100%;
+  max-width: 920px;
+  height: 440px;
+  margin: var(--space-4) auto var(--space-8);
+  position: relative;
+  z-index: 15;
+  cursor: grab;
+}
+
+.spatial-canvas-container:active {
+  cursor: grabbing;
+}
+
 /* ── Section 2: Live Demo Drop Zone ── */
 .dropzone-editorial-section {
   position: relative;
@@ -220,9 +235,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all var(--duration-normal) var(--ease-spring);
+  transition: border-color var(--duration-normal) var(--ease-spring), background-color var(--duration-normal) var(--ease-spring);
   position: relative;
   overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .bento-card:hover {
