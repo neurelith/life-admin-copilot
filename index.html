@@ -25,13 +25,13 @@
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
   <!-- Modular Design System Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=22">
-  <link rel="stylesheet" href="css/base.css?v=22">
-  <link rel="stylesheet" href="css/layout.css?v=22">
-  <link rel="stylesheet" href="css/components.css?v=22">
-  <link rel="stylesheet" href="css/views.css?v=22">
-  <link rel="stylesheet" href="css/landing.css?v=22">
-  <link rel="stylesheet" href="css/auth.css?v=22">
+  <link rel="stylesheet" href="css/tokens.css?v=26">
+  <link rel="stylesheet" href="css/base.css?v=26">
+  <link rel="stylesheet" href="css/layout.css?v=26">
+  <link rel="stylesheet" href="css/components.css?v=26">
+  <link rel="stylesheet" href="css/views.css?v=26">
+  <link rel="stylesheet" href="css/landing.css?v=26">
+  <link rel="stylesheet" href="css/auth.css?v=26">
 </head>
 <body>
 
@@ -95,11 +95,60 @@
       <div class="spatial-canvas-container" id="spatial-hero-canvas" title="Move mouse to interact with 3D spatial document vault"></div>
     </header>
 
+    <!-- Interactive "Before vs After" Paper Clutter Transformer Slider Section -->
+    <section class="transformer-section" id="transformer-section">
+      <div class="transformer-header">
+        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.2rem); font-style: italic; color: #FFFFFF; margin-bottom: 6px;">
+          Transform Paper Clutter into Calm
+        </h2>
+        <p style="font-size: 14px; color: var(--text-secondary); max-width: 520px; margin: 0 auto;">
+          Drag the slider to compare chaotic physical paperwork against your calm digital stream.
+        </p>
+      </div>
+
+      <div class="before-after-container" id="before-after-box">
+        <div class="transformer-badge badge-before">BEFORE: CHAOTIC CLUTTER</div>
+        <div class="transformer-badge badge-after">AFTER: CALM OBLIGATIONS</div>
+
+        <!-- Before Layer: Physical Paper Clutter -->
+        <div class="before-layer">
+          <div style="text-align: center; padding: 24px; max-width: 440px;">
+            <i class="ph ph-files" style="font-size: 3rem; color: var(--accent-terracotta); margin-bottom: 12px;"></i>
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: #FFFFFF; margin-bottom: 8px;">
+              Lost Receipts, Unread Circulars & Missing Passports
+            </h3>
+            <p style="font-size: 13px; color: var(--text-secondary);">
+              Scattered across WhatsApp groups, email inboxes, physical drawers, and sticky notes.
+            </p>
+          </div>
+        </div>
+
+        <!-- After Layer: Structured Liquid Studio Obligations -->
+        <div class="after-layer">
+          <div style="text-align: center; padding: 24px; max-width: 440px;">
+            <i class="ph ph-sparkle" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 12px;"></i>
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: #FFFFFF; margin-bottom: 8px;">
+              Unified Operations Stream & 1-Click Settlement
+            </h3>
+            <p style="font-size: 13px; color: var(--text-secondary);">
+              Verified due dates, automated receipts, and instant 1-tap resolution.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slider Divider & Handle Knob -->
+        <div class="slider-divider-line"></div>
+        <div class="slider-handle-knob" title="Drag to compare before vs after">
+          <i class="ph ph-arrows-left-right"></i>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 2: Live Demo Drop Zone -->
     <section class="dropzone-editorial-section" id="drop-section">
       <h2 class="dropzone-section-title">Drop anything. We'll handle it.</h2>
       
-      <div class="landing-drop-box" id="landing-quick-drop">
+      <div class="landing-drop-box kokonut-glass-card magic-border-beam" id="landing-quick-drop">
         <div class="drop-icon-wrap">
           <i class="ph ph-file-arrow-up"></i>
         </div>
@@ -110,14 +159,14 @@
           Instant OCR extraction detects exact due dates, fee amounts, and actionable requirements with 100% provenance verification.
         </p>
         <div style="display: inline-flex; gap: 8px;">
-          <span class="tag tag-subtle" style="font-size: 11px;">IIT Madras Notice</span>
-          <span class="tag tag-subtle" style="font-size: 11px;">Electricity Bill</span>
-          <span class="tag tag-subtle" style="font-size: 11px;">Apollo Prescription</span>
+          <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 11px;">IIT Madras Notice</span>
+          <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 11px;">Electricity Bill</span>
+          <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 11px;">Apollo Prescription</span>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Asymmetric Bento Grid -->
+    <!-- Section 3: Asymmetric Bento Grid with Magic UI Border Beams & Spatial Reticles -->
     <section class="bento-editorial-section" id="bento-section">
       <div style="text-align: center; margin-bottom: var(--space-10);">
         <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.4rem); font-style: italic; color: #FFFFFF; margin-bottom: 8px;">
@@ -131,11 +180,16 @@
       <div class="bento-editorial-grid">
         
         <!-- Hero Bento Card 1: Autonomous Extraction -->
-        <div class="bento-card bento-card-hero">
+        <div class="bento-card bento-card-hero kokonut-glass-card magic-border-beam">
+          <div class="spatial-reticle">
+            <span class="spatial-reticle-dot"></span>
+            <span>CONFIDENCE 98.4%</span>
+          </div>
+
           <div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
               <div>
-                <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">CORE ENGINE</span>
+                <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">CORE ENGINE</span>
                 <h3 class="bento-card-title">Autonomous Document Extraction</h3>
               </div>
               <button class="btn btn-secondary btn-sm" id="btn-in-card-scan">
@@ -154,9 +208,14 @@
         </div>
 
         <!-- Bento Card 2: 1-Click Settlement -->
-        <div class="bento-card bento-card-side">
+        <div class="bento-card bento-card-side kokonut-glass-card magic-border-beam">
+          <div class="spatial-reticle">
+            <span class="spatial-reticle-dot"></span>
+            <span>LATENCY 12ms</span>
+          </div>
+
           <div>
-            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">SETTLEMENT</span>
+            <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">SETTLEMENT</span>
             <h3 class="bento-card-title">1-Click Instant Payment</h3>
             <p class="bento-card-desc">
               Settle power bills, exam fees, and travel deposits instantly via UPI with transaction receipts.
@@ -172,9 +231,9 @@
         </div>
 
         <!-- Bento Card 3: Multi-Profile Support -->
-        <div class="bento-card bento-card-half">
+        <div class="bento-card bento-card-half kokonut-glass-card magic-border-beam">
           <div>
-            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">MULTI-VAULT</span>
+            <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">MULTI-VAULT</span>
             <h3 class="bento-card-title">Personal & Family Care Profiles</h3>
             <p class="bento-card-desc">
               Toggle between personal obligations, elderly parents' hospital follow-ups, and business tax filings without context mixing.
@@ -187,9 +246,9 @@
         </div>
 
         <!-- Bento Card 4: Automated Streams -->
-        <div class="bento-card bento-card-half">
+        <div class="bento-card bento-card-half kokonut-glass-card magic-border-beam">
           <div>
-            <span class="tag tag-subtle" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">LIVE FEEDS</span>
+            <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">LIVE FEEDS</span>
             <h3 class="bento-card-title">WhatsApp & Email Ingestion</h3>
             <p class="bento-card-desc">
               Automated ingestion syncs circulars and notices directly from school groups, utility providers, and email attachments into your workspace.
@@ -259,9 +318,32 @@
     </section>
 
     <!-- Footer -->
-    <footer style="padding: var(--space-8); text-align: center; color: var(--text-muted); font-size: 13px; margin-top: auto;">
+    <footer style="padding: var(--space-8); text-align: center; color: var(--text-muted); font-size: 13px; margin-top: auto; padding-bottom: 80px;">
       <span>Life Admin Copilot · Personal Operations Studio</span>
     </footer>
+
+    <!-- Floating Glassmorphic Action Dock (KokonutUI + Rive + Magic UI) -->
+    <div class="floating-action-dock">
+      <button class="dock-pill-btn btn-launch-app" title="Launch Command Center">
+        <i class="ph ph-lightning" style="color: var(--accent-gold);"></i>
+        <span>⚡ 1-Click Pay</span>
+      </button>
+
+      <button class="dock-pill-btn" onclick="document.getElementById('drop-section').scrollIntoView({behavior: 'smooth'})" title="Live OCR Scan Demo">
+        <i class="ph ph-scan" style="color: var(--accent-teal);"></i>
+        <span>🔍 Live Scan</span>
+      </button>
+
+      <button class="dock-pill-btn btn-launch-app" title="Admin Access">
+        <i class="ph ph-key" style="color: var(--text-primary);"></i>
+        <span>🔑 Admin Key</span>
+      </button>
+
+      <button class="dock-pill-btn" onclick="document.getElementById('search-modal').classList.add('open'); document.getElementById('search-input').focus();" title="Search Command Palette (⌘K)">
+        <i class="ph ph-magnifying-glass"></i>
+        <span>⌘K</span>
+      </button>
+    </div>
 
   </div>
 

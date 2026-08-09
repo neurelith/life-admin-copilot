@@ -44,7 +44,7 @@ class TactileAudio {
     } catch (e) {}
   }
 
-  // Temporal clock tick (Nolan-inspired ticking time)
+  // Temporal clock tick
   playTick() {
     if (!this.enabled) return;
     try {
@@ -70,7 +70,7 @@ class TactileAudio {
     } catch (e) {}
   }
 
-  // Deep Sub-Bass Cinematic Boom (on launch / auth)
+  // Deep Sub-Bass Cinematic Boom
   playSubBass() {
     if (!this.enabled) return;
     try {
@@ -104,7 +104,7 @@ class TactileAudio {
       if (!this.ctx) return;
       if (this.ctx.state === 'suspended') this.ctx.resume();
 
-      const freqs = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      const freqs = [523.25, 659.25, 783.99, 1046.50];
       freqs.forEach((f, i) => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
@@ -128,9 +128,68 @@ class TactileAudio {
 const tactile = new TactileAudio();
 window.tactile = tactile;
 
+// ── Interactive "Before vs After" Paper Clutter Transformer Drag Physics ──
+function initBeforeAfterTransformer() {
+  const container = document.getElementById('before-after-box');
+  if (!container) return;
+
+  let isDragging = false;
+  let lastTickPos = 50;
+
+  function updateSlider(clientX) {
+    const rect = container.getBoundingClientRect();
+    let posPercent = ((clientX - rect.left) / rect.width) * 100;
+    posPercent = Math.max(5, Math.min(95, posPercent));
+
+    container.style.setProperty('--slider-pos', `${posPercent}%`);
+
+    // Trigger audio tick every 5% movement
+    if (Math.abs(posPercent - lastTickPos) > 4) {
+      tactile.playTick();
+      lastTickPos = posPercent;
+    }
+  }
+
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    updateSlider(e.clientX);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      updateSlider(e.clientX);
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      tactile.playClick();
+    }
+  });
+
+  // Touch Support
+  container.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      isDragging = true;
+      updateSlider(e.touches[0].clientX);
+    }
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length > 0) {
+      updateSlider(e.touches[0].clientX);
+    }
+  });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+}
+
 // ── Mouse-Following Spotlight Tracking ──
 function initSpotlightCards() {
-  const elements = document.querySelectorAll('.spotlight-card, .bento-tile, .item-row, .doc-card-3d, .spatial-feature-card');
+  const elements = document.querySelectorAll('.spotlight-card, .bento-tile, .item-row, .doc-card-3d, .spatial-feature-card, .bento-card');
   elements.forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const rect = el.getBoundingClientRect();
@@ -181,48 +240,6 @@ function executeNaturalLanguageSearch(query, dataset) {
         item: item
       });
     });
-    dataset.inbox.filter(i => i.amount || i.sourceCategory === 'finance').forEach(item => {
-      results.push({
-        title: item.title,
-        subtitle: `Inbox Clutter · ${item.amount} (${item.source})`,
-        type: 'Unprocessed Bill',
-        targetView: 'inbox',
-        item: item
-      });
-    });
-  }
-
-  if (q.includes('passport') || q.includes('id') || q.includes('expire') || q.includes('document') || q.includes('aadhaar')) {
-    dataset.documents.forEach(doc => {
-      results.push({
-        title: doc.title,
-        subtitle: `${doc.source} · Expires: ${doc.expires}`,
-        type: 'Secured Document',
-        targetView: 'documents',
-        item: doc
-      });
-    });
-  }
-
-  if (q.includes('trip') || q.includes('travel') || q.includes('chennai') || q.includes('train') || q.includes('pnr')) {
-    dataset.tasks.filter(t => t.category === 'travel').forEach(item => {
-      results.push({
-        title: item.title,
-        subtitle: `${item.due} · ${item.sourceName}`,
-        type: 'Travel Obligation',
-        targetView: 'tasks',
-        item: item
-      });
-    });
-    dataset.timeline.filter(t => t.category === 'travel').forEach(item => {
-      results.push({
-        title: item.title,
-        subtitle: `${item.day} at ${item.time}`,
-        type: 'Travel Event',
-        targetView: 'calendar',
-        item: item
-      });
-    });
   }
 
   return results;
@@ -231,11 +248,21 @@ function executeNaturalLanguageSearch(query, dataset) {
 document.addEventListener('DOMContentLoaded', () => {
   initSpotlightCards();
   init3DParallaxTilt();
+  initBeforeAfterTransformer();
 
   // Attach mechanical click audio to all buttons
-  document.querySelectorAll('button, .nav-item, .item-row, .sample-pill, .filter-chip').forEach(btn => {
+  document.querySelectorAll('button, .nav-item, .item-row, .sample-pill, .filter-chip, .dock-pill-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       tactile.playClick();
     });
+  });
+
+  // ⌘K Keyboard Shortcut Listener
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      document.getElementById('search-modal')?.classList.add('open');
+      document.getElementById('search-input')?.focus();
+    }
   });
 });
