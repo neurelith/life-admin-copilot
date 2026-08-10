@@ -312,20 +312,23 @@
   border-radius: var(--radius-full);
 }
 
-/* ── Mobile Bottom Navigation Bar ── */
+/* ── Mobile Bottom Navigation Bar (KokonutUI Liquid Glass) ── */
 .mobile-nav {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
-  background: var(--bg-surface);
-  border-top: 1px solid var(--border-subtle);
-  z-index: 45;
-  padding: 0 var(--space-2);
+  height: 68px;
+  background: rgba(26, 25, 23, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid rgba(232, 228, 220, 0.16);
+  z-index: 80;
+  padding: 0 var(--space-2) env(safe-area-inset-bottom);
   align-items: center;
   justify-content: space-around;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-nav-item {
@@ -335,34 +338,41 @@
   justify-content: center;
   gap: 3px;
   color: var(--text-muted);
+  font-family: var(--font-sans);
   font-size: 10px;
-  font-weight: var(--weight-medium);
+  font-weight: 500;
   padding: 6px 10px;
   flex: 1;
   position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast);
 }
 
 .mobile-nav-item i {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .mobile-nav-item.active {
-  color: var(--accent-hermes);
+  color: var(--accent-gold);
+  font-weight: 600;
 }
 
 .mobile-nav-capture-btn {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: var(--text-primary);
-  color: var(--text-inverse);
+  background: var(--accent-gold);
+  color: var(--bg-app);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -18px;
-  box-shadow: var(--shadow-elevated);
-  font-size: 1.35rem;
-  border: 2px solid var(--bg-surface);
+  margin-top: -20px;
+  box-shadow: 0 0 20px rgba(232, 200, 114, 0.5);
+  font-size: 1.4rem;
+  border: 3px solid var(--bg-app);
+  cursor: pointer;
 }
 
 /* ── Slide-Out Context Inspector Drawer ── */
@@ -370,9 +380,9 @@
   position: fixed;
   inset: 0;
   background: var(--bg-overlay);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 60;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 85;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-normal) var(--ease-luxury);
@@ -388,11 +398,11 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 500px;
+  width: 480px;
   max-width: 100vw;
-  background: var(--bg-surface);
-  box-shadow: var(--shadow-overlay);
-  z-index: 65;
+  background: var(--bg-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  z-index: 90;
   transform: translateX(100%);
   transition: transform var(--duration-normal) var(--ease-luxury);
   display: flex;
@@ -422,7 +432,7 @@
 .drawer-footer {
   padding: var(--space-4) var(--space-6);
   border-top: 1px solid var(--border-subtle);
-  background: var(--bg-sidebar);
+  background: rgba(232, 228, 220, 0.04);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -434,8 +444,8 @@
   position: fixed;
   inset: 0;
   background: var(--bg-overlay);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -452,12 +462,12 @@
 }
 
 .modal-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-overlay);
+  background: var(--bg-card);
+  border: 1px solid rgba(232, 228, 220, 0.16);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
   width: 100%;
-  max-width: 600px;
+  max-width: 580px;
   overflow: hidden;
 }
 
@@ -487,11 +497,17 @@
   }
 
   .app-main {
+    margin-left: 0;
     width: 100%;
   }
 
+  .app-topbar {
+    padding: 0 var(--space-4);
+    height: 56px;
+  }
+
   .app-content {
-    padding: var(--space-6) var(--space-4) 96px;
+    padding: var(--space-4) var(--space-3) 96px;
   }
 
   .fab-capture {
@@ -503,6 +519,24 @@
   }
 
   .topbar-search-trigger {
-    width: 180px;
+    width: 150px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-topbar {
+    padding: 0 var(--space-2);
+  }
+
+  .topbar-search-trigger {
+    width: 110px;
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+
+  .btn-principles-hide-mobile {
+    display: none !important;
   }
 }

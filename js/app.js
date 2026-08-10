@@ -219,77 +219,79 @@ class LifeAdminApp {
     const attentionCount = urgentTasks.length;
 
     container.innerHTML = `
-      <!-- Luxury Bento Hero Section -->
+      <!-- Luxury Bento Hero Section (KokonutUI Liquid Glass + Instrument Serif) -->
       <div class="bento-hero-grid">
         
         <!-- Bento Tile Left: 3D Operations Core -->
-        <div class="bento-tile bento-tile-dark spotlight-card">
+        <div class="bento-tile bento-tile-dark kokonut-glass-card magic-border-beam spotlight-card">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div>
-              <span class="tag" style="background: rgba(200, 90, 42, 0.2); color: #FFA07A; border: 1px solid rgba(200, 90, 42, 0.4); margin-bottom: 8px;">
+              <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">
                 <i class="ph ph-sparkle"></i> 3D Operations Core
               </span>
-              <h2 style="font-size: var(--text-xl); font-weight: 600; margin-top: 4px;">Good morning, ${currentProfile.name}</h2>
-              <p style="font-size: var(--text-sm); margin-top: 2px;">
-                ${attentionCount > 0 ? `${attentionCount} immediate obligations require your decision.` : `All personal operations are in state of peace.`}
+              <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; font-weight: 400; color: #FFFFFF; line-height: 1.15; margin-top: 4px;">
+                Good morning, ${currentProfile.name}
+              </h2>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">
+                ${attentionCount > 0 ? `${attentionCount} immediate obligations require your decision.` : `All personal operations are in state of calm.`}
               </p>
             </div>
-            <button class="btn-shimmer" id="btn-hero-capture" style="padding: 6px 14px; font-size: var(--text-xs);">
-              <i class="ph ph-plus-bold"></i> + Capture Clutter
+            <button class="btn btn-primary btn-sm" id="btn-hero-capture">
+              <i class="ph ph-plus-bold"></i> + Capture
             </button>
           </div>
 
           <!-- WebGL Three.js Container -->
           <div class="three-canvas-wrap" id="three-hub-canvas"></div>
           
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dark-secondary); border-top: 1px solid var(--border-dark); padding-top: 8px;">
-            <span><i class="ph ph-cursor-click"></i> Hover & click orbiting nodes to navigate</span>
-            <span>Profile: <strong style="color: #FFA07A;">${currentProfile.role}</strong></span>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+            <span><i class="ph ph-cursor-click"></i> Click nodes to navigate</span>
+            <span>Profile: <strong style="color: var(--accent-gold);">${currentProfile.role}</strong></span>
           </div>
         </div>
 
         <!-- Bento Tile Right: Focus Overview & Feeds Sync -->
-        <div class="bento-tile spotlight-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="bento-tile kokonut-glass-card spotlight-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="section-label" style="margin-bottom: 4px;">
+            <div class="section-label" style="margin-bottom: 6px;">
               <span>Focus Overview</span>
-              <button class="btn btn-ghost btn-sm" id="btn-open-feeds" style="font-size: 11px; color: var(--accent-hermes); padding: 2px 6px;">
+              <button class="btn btn-ghost btn-sm" id="btn-open-feeds" style="font-size: 11px; color: var(--accent-gold); padding: 2px 6px;">
                 <i class="ph ph-broadcast"></i> Sync Feeds
               </button>
             </div>
-            <div style="font-size: var(--text-xs); color: var(--text-secondary); margin-bottom: var(--space-3);">
+            <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: var(--space-4);">
               Automated extraction across WhatsApp & Gmail
             </div>
 
             <div class="metric-row">
               <div class="metric-pill">
-                <span class="metric-value" style="color: var(--urgency-high);">${attentionCount}</span>
+                <span class="metric-value" style="color: var(--accent-terracotta);">${attentionCount}</span>
                 <span class="metric-label">Due Today</span>
               </div>
               <div class="metric-pill">
-                <span class="metric-value" style="color: var(--accent);">${this.data.inbox.length}</span>
+                <span class="metric-value" style="color: var(--accent-gold);">${this.data.inbox.length}</span>
                 <span class="metric-label">Inbox Raw</span>
               </div>
             </div>
 
-            <div class="metric-row" style="margin-top: var(--space-2);">
+            <div class="metric-row" style="margin-top: var(--space-3);">
               <div class="metric-pill">
-                <span class="metric-value amount-val">${currentProfile.pendingPayment}</span>
+                <span class="metric-value amount-val" style="color: var(--accent-gold); font-size: 1.5rem;">${currentProfile.pendingPayment}</span>
                 <span class="metric-label">Pending Pay</span>
               </div>
               <div class="metric-pill">
-                <span class="metric-value">${this.data.documents.length}</span>
+                <span class="metric-value" style="color: var(--accent-teal);">${this.data.documents.length}</span>
                 <span class="metric-label">Docs Safe</span>
               </div>
             </div>
           </div>
 
           <!-- Quick Travel Pin -->
-          <div style="background: var(--cat-travel-bg); border: 1px solid rgba(13, 124, 143, 0.2); border-radius: var(--radius-sm); padding: 10px; margin-top: var(--space-3);">
-            <div style="font-size: 11px; font-weight: 600; color: var(--cat-travel); display: flex; align-items: center; gap: 4px;">
+          <div style="background: rgba(124, 170, 189, 0.08); border: 1px solid rgba(124, 170, 189, 0.25); border-radius: var(--radius-md); padding: 12px; margin-top: var(--space-4);">
+            <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--accent-teal); display: flex; align-items: center; gap: 6px;">
               <i class="ph ph-train"></i> Upcoming Trip: Chennai Express
             </div>
-            <div style="font-size: 11px; color: var(--text-primary); margin-top: 2px;">
+            <div style="font-size: 12px; color: var(--text-primary); margin-top: 4px;">
               Friday Aug 15 · 06:15 AM (PNR: 4529018471)
             </div>
           </div>
