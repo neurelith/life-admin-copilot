@@ -58,14 +58,14 @@ class LifeAdminApp {
     const profile = this.data.profiles[profileKey];
     if (!profile) return;
 
-    // Update Sidebar User Display
-    const avatarEl = document.querySelector('.user-avatar');
-    const nameEl = document.querySelector('.user-name');
-    const statusEl = document.querySelector('.user-status span:last-child');
+    // Update Bespoke Studio Sidebar Elements
+    const avatarEl = document.getElementById('sidebar-avatar-char');
+    const nameEl = document.getElementById('sidebar-user-name');
+    const roleEl = document.getElementById('sidebar-user-role');
 
     if (avatarEl) avatarEl.textContent = profile.avatar;
-    if (nameEl) nameEl.textContent = profile.name;
-    if (statusEl) statusEl.textContent = profile.role;
+    if (nameEl) nameEl.textContent = `${profile.name}'s Studio`;
+    if (roleEl) roleEl.textContent = profile.role;
 
     this.renderAll();
   }
@@ -229,7 +229,7 @@ class LifeAdminApp {
               <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">
                 <i class="ph ph-sparkle"></i> 3D Operations Core
               </span>
-              <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; font-weight: 400; color: #FFFFFF; line-height: 1.15; margin-top: 4px;">
+              <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; font-weight: 400; color: var(--text-primary); line-height: 1.15; margin-top: 4px;">
                 Good morning, ${currentProfile.name}
               </h2>
               <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">

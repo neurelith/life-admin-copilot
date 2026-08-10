@@ -48,6 +48,61 @@
   margin-bottom: var(--space-5);
 }
 
+/* ── Biometric & Social Auth ── */
+.auth-biometric-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.btn-auth-passkey,
+.btn-auth-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(232, 228, 220, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.btn-auth-passkey:hover,
+.btn-auth-google:hover {
+  background: rgba(232, 228, 220, 0.12);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: var(--space-3) 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
 /* ── Admin Password Form ── */
 .admin-password-form {
   margin-bottom: var(--space-4);
@@ -166,10 +221,40 @@
 .demo-profile-name {
   font-size: 12px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 .demo-profile-desc {
   font-size: 11px;
   color: var(--text-secondary);
+}
+
+/* ── Light Mode Overrides for Auth Modal ── */
+[data-theme="light"] .auth-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(44, 40, 37, 0.12) !important;
+  box-shadow: 0 20px 50px rgba(44, 40, 37, 0.12) !important;
+}
+
+[data-theme="light"] .demo-profile-chip {
+  background: #F8F5EE !important;
+  border-color: rgba(44, 40, 37, 0.1) !important;
+}
+
+[data-theme="light"] .btn-auth-passkey,
+[data-theme="light"] .btn-auth-google {
+  background: #F8F5EE !important;
+  border-color: rgba(44, 40, 37, 0.12) !important;
+  color: #1C1B18 !important;
+}
+
+[data-theme="light"] .btn-auth-admin-submit {
+  background: #1C1B18 !important;
+  color: #FAF8F5 !important;
+}
+
+[data-theme="light"] .admin-password-input {
+  background: #F8F5EE !important;
+  border-color: rgba(44, 40, 37, 0.14) !important;
+  color: #1C1B18 !important;
 }

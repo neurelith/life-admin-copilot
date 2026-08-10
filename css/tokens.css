@@ -84,28 +84,30 @@
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Old Library Parchment Light Theme Overrides */
+/* Luxury Editorial Paper Light Theme Overrides (Kinfolk / Stripe Press / Monocle) */
 [data-theme="light"] {
-  --bg-app: #FAF7F2;
-  --bg-sidebar: #F0ECE4;
+  --bg-app: #FAF8F5;
+  --bg-sidebar: #F2EEE6;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F6F2EA;
+  --bg-card-hover: #F8F5EE;
   --bg-card-subtle: rgba(44, 40, 37, 0.03);
   --bg-elevated: #FFFFFF;
   --bg-input: rgba(44, 40, 37, 0.05);
-  --bg-glass: rgba(250, 247, 242, 0.88);
+  --bg-glass: rgba(250, 248, 245, 0.92);
 
-  --border-subtle: rgba(44, 40, 37, 0.08);
-  --border-medium: rgba(44, 40, 37, 0.16);
-  --border-focus: #B88E36;
+  --border-subtle: rgba(44, 40, 37, 0.09);
+  --border-medium: rgba(44, 40, 37, 0.18);
+  --border-focus: #9E7418;
 
-  --text-primary: #2C2825;
-  --text-secondary: #706A62;
-  --text-muted: #9C958A;
-  --text-inverse: #FAF7F2;
+  --text-primary: #1C1B18;
+  --text-secondary: #635F57;
+  --text-muted: #8F8A80;
+  --text-inverse: #FAF8F5;
 
-  --accent: #B88E36;
-  --accent-gold: #B88E36;
-  --accent-teal: #487A8C;
+  --accent: #9E7418;
+  --accent-gold: #9E7418;
+  --accent-teal: #3B7285;
   --accent-terracotta: #B84A36;
+  --urgency-high-bg: rgba(184, 74, 54, 0.1);
+  --urgency-high: #B84A36;
 }
