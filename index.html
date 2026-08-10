@@ -25,13 +25,13 @@
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
   <!-- Modular Design System Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=40">
-  <link rel="stylesheet" href="css/base.css?v=40">
-  <link rel="stylesheet" href="css/layout.css?v=40">
-  <link rel="stylesheet" href="css/components.css?v=40">
-  <link rel="stylesheet" href="css/views.css?v=40">
-  <link rel="stylesheet" href="css/landing.css?v=40">
-  <link rel="stylesheet" href="css/auth.css?v=40">
+  <link rel="stylesheet" href="css/tokens.css?v=48">
+  <link rel="stylesheet" href="css/base.css?v=48">
+  <link rel="stylesheet" href="css/layout.css?v=48">
+  <link rel="stylesheet" href="css/components.css?v=48">
+  <link rel="stylesheet" href="css/views.css?v=48">
+  <link rel="stylesheet" href="css/landing.css?v=48">
+  <link rel="stylesheet" href="css/auth.css?v=48">
 </head>
 <body>
 
@@ -53,28 +53,30 @@
        ============================================================ -->
   <div id="landing-view">
     
-    <!-- Top Navigation -->
-    <nav class="spatial-nav">
-      <div class="spatial-brand">
-        <div class="brand-mark-symbol">L</div>
-        <span class="spatial-brand-mark">Life Admin</span>
-      </div>
+    <!-- Centered Floating Glass Capsule Navigation -->
+    <div class="spatial-nav-wrap">
+      <nav class="spatial-nav">
+        <div class="spatial-brand">
+          <div class="brand-mark-symbol">L</div>
+          <span class="spatial-brand-mark">Life Admin</span>
+        </div>
 
-      <div class="spatial-nav-links">
-        <span class="spatial-nav-link" onclick="document.getElementById('bento-section').scrollIntoView({behavior: 'smooth'})">Capabilities</span>
-        <span class="spatial-nav-link" onclick="document.getElementById('how-section').scrollIntoView({behavior: 'smooth'})">Workflow</span>
-        <span class="spatial-nav-link" onclick="document.getElementById('drop-section').scrollIntoView({behavior: 'smooth'})">Live Extraction</span>
-      </div>
+        <div class="spatial-nav-links">
+          <span class="spatial-nav-link" onclick="document.getElementById('bento-section').scrollIntoView({behavior: 'smooth'})">Capabilities</span>
+          <span class="spatial-nav-link" onclick="document.getElementById('how-section').scrollIntoView({behavior: 'smooth'})">Workflow</span>
+          <span class="spatial-nav-link" onclick="document.getElementById('drop-section').scrollIntoView({behavior: 'smooth'})">Extraction</span>
+        </div>
 
-      <div class="spatial-nav-actions">
-        <button class="btn btn-ghost btn-sm btn-launch-app">
-          Live Demo
-        </button>
-        <button class="btn btn-primary btn-launch-app" id="btn-landing-enter">
-          Sign In / Get Started →
-        </button>
-      </div>
-    </nav>
+        <div class="spatial-nav-actions">
+          <button class="btn btn-ghost btn-sm btn-launch-app" style="font-size: 12px; padding: 6px 12px;">
+            Live Demo
+          </button>
+          <button class="btn btn-primary btn-sm btn-launch-app" id="btn-landing-enter" style="font-size: 12px; padding: 6px 14px;">
+            Sign In →
+          </button>
+        </div>
+      </nav>
+    </div>
 
     <!-- Hero Section (0-100vh) -->
     <header class="hero-editorial-wrap">
@@ -688,13 +690,13 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Application Scripts -->
-  <script src="js/data.js?v=40"></script>
-  <script src="js/three-spatial-hero.js?v=40"></script>
-  <script src="js/interactions.js?v=40"></script>
-  <script src="js/auth.js?v=40"></script>
-  <script src="js/landing-animations.js?v=40"></script>
-  <script src="js/landing-interactive.js?v=40"></script>
-  <script src="js/app.js?v=40"></script>
+  <script src="js/data.js?v=48"></script>
+  <script src="js/three-spatial-hero.js?v=48"></script>
+  <script src="js/interactions.js?v=48"></script>
+  <script src="js/auth.js?v=48"></script>
+  <script src="js/landing-animations.js?v=48"></script>
+  <script src="js/landing-interactive.js?v=48"></script>
+  <script src="js/app.js?v=48"></script>
   
   <script>
     window.addEventListener('load', () => {

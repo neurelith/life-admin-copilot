@@ -17,47 +17,65 @@
 }
 
 /* ── Top Navigation Bar ── */
-.spatial-nav {
-  position: sticky;
+.spatial-nav-wrap {
+  position: fixed;
   top: 0;
-  height: 64px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 16px var(--space-4);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.spatial-nav {
+  pointer-events: auto;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-8);
+  padding: 0 12px 0 18px;
   background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  z-index: 40;
-  max-width: 1200px;
-  margin: 0 auto;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  max-width: 920px;
   width: 100%;
+  transition: all var(--duration-fast);
+}
+
+[data-theme="light"] .spatial-nav {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(44, 40, 37, 0.12);
+  box-shadow: 0 12px 36px rgba(44, 40, 37, 0.08);
 }
 
 .spatial-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .brand-mark-symbol {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background: var(--accent-gold);
   color: var(--bg-app);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
 }
 
 .spatial-brand-mark {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -66,24 +84,31 @@
 .spatial-nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
-  font-size: 14px;
+  gap: 4px;
+  font-size: 13px;
   color: var(--text-secondary);
 }
 
 .spatial-nav-link {
-  transition: color var(--duration-fast);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast);
   cursor: pointer;
 }
 
 .spatial-nav-link:hover {
   color: var(--text-primary);
+  background: rgba(232, 228, 220, 0.08);
+}
+
+[data-theme="light"] .spatial-nav-link:hover {
+  background: rgba(44, 40, 37, 0.06);
 }
 
 .spatial-nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 8px;
 }
 
 /* ── Hero Section (0-100vh) ── */

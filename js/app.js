@@ -206,7 +206,7 @@ class LifeAdminApp {
   }
 
   // ────────────────────────────────────────────────────────────
-  // 1. TODAY VIEW RENDERER (With 3D Hub & Bento)
+  // 1. TODAY VIEW RENDERER (High-Density Operations Radar)
   // ────────────────────────────────────────────────────────────
   renderTodayView() {
     const container = document.getElementById('view-today');
@@ -222,31 +222,61 @@ class LifeAdminApp {
       <!-- Luxury Bento Hero Section (KokonutUI Liquid Glass + Instrument Serif) -->
       <div class="bento-hero-grid">
         
-        <!-- Bento Tile Left: 3D Operations Core -->
-        <div class="bento-tile bento-tile-dark kokonut-glass-card magic-border-beam spotlight-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div>
-              <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 8px; display: inline-block;">
-                <i class="ph ph-sparkle"></i> 3D Operations Core
-              </span>
-              <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; font-weight: 400; color: var(--text-primary); line-height: 1.15; margin-top: 4px;">
-                Good morning, ${currentProfile.name}
-              </h2>
-              <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">
-                ${attentionCount > 0 ? `${attentionCount} immediate obligations require your decision.` : `All personal operations are in state of calm.`}
-              </p>
+        <!-- Bento Tile Left: Personal Operations Radar Briefing -->
+        <div class="bento-tile bento-tile-dark kokonut-glass-card magic-border-beam spotlight-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <span class="tag tag-subtle kokonut-glass-pill" style="font-size: 10px; margin-bottom: 6px; display: inline-block;">
+                  <i class="ph ph-sparkle"></i> OPERATIONS RADAR · BANGALORE
+                </span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; font-weight: 400; color: var(--text-primary); line-height: 1.15; margin-top: 2px;">
+                  Good morning, ${currentProfile.name}
+                </h2>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">
+                  ${attentionCount > 0 ? `<strong>${attentionCount} immediate obligations</strong> require decision before 6:00 PM.` : `All personal operations are in state of calm.`}
+                </p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-hero-capture">
+                <i class="ph ph-plus-bold"></i> + Capture
+              </button>
             </div>
-            <button class="btn btn-primary btn-sm" id="btn-hero-capture">
-              <i class="ph ph-plus-bold"></i> + Capture
-            </button>
+
+            <!-- Active Day Obligations Queue -->
+            <div style="display: flex; flex-direction: column; gap: 8px; margin: 16px 0;">
+              ${urgentTasks.map((t, idx) => `
+                <div style="background: rgba(232, 228, 220, 0.04); border: 1px solid ${t.dueCategory === 'today' ? 'rgba(212, 113, 94, 0.35)' : 'var(--border-subtle)'}; border-radius: var(--radius-md); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; transition: all var(--duration-fast);" class="hover-lift-card" data-action="inspect-task" data-id="${t.id}">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: ${t.category === 'education' ? 'rgba(124, 170, 189, 0.15)' : 'rgba(232, 200, 114, 0.15)'}; color: ${t.category === 'education' ? 'var(--accent-teal)' : 'var(--accent-gold)'}; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+                      <i class="ph ${this.getCategoryIcon(t.category)}"></i>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; font-weight: 600; color: var(--text-primary);">${t.title}</div>
+                      <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                        <span>${t.sourceName}</span>
+                        <span>·</span>
+                        <span style="color: ${t.dueCategory === 'today' ? 'var(--accent-terracotta)' : 'var(--accent-gold)'}; font-weight: 600;">${t.due}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    ${t.amount ? `
+                      <button class="btn btn-primary btn-sm" data-action="pay-task" data-id="${t.id}" style="padding: 4px 10px; font-size: 11px;">
+                        <i class="ph ph-lightning"></i> Pay ${t.amount}
+                      </button>
+                    ` : `
+                      <button class="btn btn-secondary btn-sm" data-action="inspect-task" data-id="${t.id}" style="padding: 4px 10px; font-size: 11px;">Review</button>
+                    `}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
           </div>
 
-          <!-- WebGL Three.js Container -->
-          <div class="three-canvas-wrap" id="three-hub-canvas"></div>
-          
+          <!-- Bottom Status Progress -->
           <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 10px;">
-            <span><i class="ph ph-cursor-click"></i> Click nodes to navigate</span>
-            <span>Profile: <strong style="color: var(--accent-gold);">${currentProfile.role}</strong></span>
+            <span><i class="ph ph-shield-check" style="color: #22C55E;"></i> 98.4% Extraction Provenance</span>
+            <span>Pending: <strong style="color: var(--accent-gold);">${currentProfile.pendingPayment}</strong></span>
           </div>
         </div>
 
@@ -299,7 +329,7 @@ class LifeAdminApp {
 
       </div>
 
-      <!-- Section: Needs Attention -->
+      <!-- Section: Needs Attention (Modern Linear/Things-3 Cards) -->
       <div class="content-section">
         <div class="section-label">
           <span>Needs Attention</span>
@@ -311,25 +341,31 @@ class LifeAdminApp {
             ${urgentTasks.map((task, idx) => `
               <div class="item-row ${idx === 0 ? 'border-beam-card' : ''}" data-task-id="${task.id}">
                 <div class="item-row-left">
+                  <div class="item-category-squircle" style="background: ${task.category === 'education' ? 'rgba(124, 170, 189, 0.15)' : (task.category === 'finance' ? 'rgba(232, 200, 114, 0.15)' : 'rgba(212, 113, 94, 0.15)')}; color: ${task.category === 'education' ? 'var(--accent-teal)' : (task.category === 'finance' ? 'var(--accent-gold)' : 'var(--accent-terracotta)')};">
+                    <i class="ph ${this.getCategoryIcon(task.category)}"></i>
+                  </div>
                   <div class="item-checkbox ${task.completed ? 'checked' : ''}" data-action="toggle-task" data-id="${task.id}">
                     <i class="ph ph-check" style="font-size: 11px;"></i>
                   </div>
                   <div class="item-main-info" data-action="inspect-task" data-id="${task.id}">
                     <div class="item-title ${task.completed ? 'completed' : ''}">${task.title}</div>
                     <div class="item-subtext">
-                      <span class="item-subtext-source"><i class="ph ${this.getCategoryIcon(task.category)}"></i> ${task.sourceName}</span>
-                      ${task.amount ? `<span class="tag tag-subtle amount-val">${task.amount}</span>` : ''}
+                      <span class="item-subtext-source">${task.sourceName}</span>
+                      <span class="item-provenance-chip"><i class="ph ph-shield-check"></i> 98.4% Provenance</span>
                     </div>
                   </div>
                 </div>
                 <div class="item-row-right">
                   <span class="tag ${task.dueCategory === 'today' ? 'tag-urgent' : 'tag-warning'}">${task.due}</span>
                   ${task.amount ? `
+                    <span class="item-amount-chip">${task.amount}</span>
                     <button class="btn btn-primary btn-sm" data-action="pay-task" data-id="${task.id}">
-                      <i class="ph ph-lightning"></i> Pay ${task.amount}
+                      <i class="ph ph-lightning"></i> Pay
                     </button>
                   ` : ''}
-                  <button class="btn btn-secondary btn-sm" data-action="inspect-task" data-id="${task.id}">Review</button>
+                  <button class="btn btn-secondary btn-sm" data-action="inspect-task" data-id="${task.id}">
+                    <i class="ph ph-eye"></i> Details
+                  </button>
                 </div>
               </div>
             `).join('')}

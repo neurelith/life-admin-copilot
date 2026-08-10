@@ -237,29 +237,41 @@
   text-overflow: ellipsis;
 }
 
-.item-subtext-source {
+.item-category-squircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.item-provenance-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  color: var(--text-muted);
+  gap: 3px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  background: rgba(232, 200, 114, 0.1);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
 }
 
-/* ────────────────────────────────────────────────────────────
-   3. INBOX TRIAGE VIEW
-   ──────────────────────────────────────────────────────────── */
-.view-header-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: var(--space-6);
-  flex-wrap: wrap;
-  gap: var(--space-4);
+.item-amount-chip {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  padding: 0 4px;
 }
 
-.view-title-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
+.hover-lift-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(232, 200, 114, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .view-title {
@@ -267,7 +279,7 @@
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-style: italic;
   font-weight: 400;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 .view-count-badge {
